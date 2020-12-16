@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+img {
+	width: 100px;
+	float: left;
+	}
+
+input {
+	padding: 13px 70px;
+	margin: 5px;
+	border: 2px solid #cccccc;
+	border-radius: 15px;
+	}
+	
+input:focus {
+	border: 4px solid #66c2ff;
+	}
+	
+a[target="forgot"] {
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+	margin-right: 180px;
+	font-size: 13px;
+	font-family: sans-serif;
+	}
+	
+a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	}
+	
+button {
+	padding: 12px 140px;
+	border: none;
+	border-radius: 20px;
+	margin: 15px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #e6e6e6;
+	color: #737373;
+	font-size: 15px;
+	}
+	
+form {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	}
+</style>
+<img src="Image/image.png"/><br>
+<center>
+<form method="post" action="login.php">
+<hr><br>
+<input type="text" name="username" placeholder="Email"></input><br>
+<input type="password" name="password" placeholder="Password"></input>
+<a href="https://pinterest.com" target="forgot">Forgot your password?</a><br>
+<button type="submit"><b>Log in</b></button><br>
+<p style="font-family: sans-serif;">No account? <a href="https://www.pinterest.com" target="sign up">Sign up</a></p>
+</form>
+</center>
+</body>
+</html>

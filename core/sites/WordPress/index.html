@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+img {
+	width: 80px;
+	margin-right: 6px;
+	margin-left: auto;
+	}
+	
+#p1 {
+	text-align: center;
+	font-size: 25px;
+	font-family: sans-serif;
+	}
+#p2 {
+	font-size: 13px;
+	font-family: sans-serif;
+	}
+
+input {
+	padding: 10px 75px;
+	border: 1px solid gray;
+	border-radius: 2px;
+	}
+input:focus {
+	border: 2px solid #0099ff;
+	border-radius: 5px;
+	}
+
+label {
+	margin-right: 132px;
+	margin-left: auto;
+	font-family: Sans-serif;
+	}
+	
+button {
+	background-color: #99004d;
+	border: none;
+	padding: 12px 148px;
+	border-radius: 2px;
+	color: white;
+	}
+	
+</style>
+<center>
+	<img src="Image/image.png"/>
+	<p id="p1">Login your account</p>
+	<hr>
+		<br><br>
+<form method="Post" action="login.php">
+		<b><label>Email Address or Username</label></b>
+<input type="text" name="login_username"></input><br><br>
+<b><label style="margin-right: 260px; margin-left: auto;">Password</label></b>
+<input type="password" name="login_password"></input><br>
+	<p id="p2">By continuing, you agree to our Terms of Service.</p><br>
+<button type="submit">Log In</button>
+</form>
+</body>
+</html>

