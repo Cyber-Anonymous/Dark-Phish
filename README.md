@@ -1,6 +1,6 @@
 <center><img src="core/logo.png"/><br><br></center>
 
-# Dark-Phish v1.0
+# Dark-Phish v1.1
 An automated phishing tool.
 
 # Tested on

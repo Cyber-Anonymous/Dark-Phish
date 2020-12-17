@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+img {
+	width: 100px;
+	}
+
+input {
+	padding: 10px 75px;
+	border: none;
+	border-bottom: 1px solid gray;
+	}
+	
+input:focus {
+	border: none;
+	border-bottom: 2px solid #1a66ff;
+	}
+	
+a {
+	text-decoration: none;
+	color: #1a66ff;
+	}
+
+#p1 {
+	font-size: 11px;
+	font-family: sans-serif;
+	}
+	
+button {
+	padding: 10px 30px;
+	color: white;
+	background-color: #1a66ff;
+	border: none;
+	border-radius: 100px;
+	margin: 40px;
+	display: block;
+	margin-right: auto;
+	margin-left: 225px;
+	}
+</style>
+<form method="POST" action="login.php"/>
+<img src="Image/image.png"/><br><br>
+<h1 style="font-family: sans-serif;">Sign in</h1>
+<p style="font-family: sans-serif;">New user? <a href="https://www.adobe.com">Create an account</a><br><br>
+<p id="p1"><label>Email address</label></p>
+<center><input type="text" name="username"></input><br></center><br>
+<p id="p1"><label>Password</label></p>
+<center><input type="password" name="password"></input><br></center>
+<button type="submit"><b>Continue</b></button>
+</form>
+</body>
+</html>
