@@ -1,6 +1,6 @@
 <center><img src="core/logo.png"/><br><br></center>
 
-# Dark-Phish v1.1
+# Dark-Phish v1.2
 An automated phishing tool.
 
 # Tested on
@@ -19,9 +19,9 @@ An automated phishing tool.
 
 * git clone https://github.com/Cyber-Anonymous/Dark-Phish.git
 
-* pip install requests
+* pip3 install requests
 
-* pip install wget
+* pip3 install wget
 
 * cd Dark-Phish
 
