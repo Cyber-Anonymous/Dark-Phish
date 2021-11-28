@@ -7,8 +7,15 @@
 img {
 	width: 40px;
 	}
+	
+#p1 {
+	font-family: arial;
+	font-size: 35px;
+	text-align: left;
+}
 input[type="text"],[type="password"] {
-	padding: 8px 60px;
+	width: 22em;
+	padding: 8px;
 	border: 1px solid #bfbfbf;
 	border-radius: 5px;
 	font-family: sans-serif;
@@ -24,11 +31,11 @@ label {
 	}
 
 button {
-	padding: 8px 130px;
+	padding: 9px 130px;
 	border-radius: 5px;
 	border: none;
 	color: white;
-	background-color: #008000;
+	background-color: #0074e9;
 	}
 
 a {
@@ -47,7 +54,7 @@ form {
 </style>
 <center>
 <img src="Image/logo.png">
-<h1 align="left" style="font-family: sans-serif;">GitLab.com</h1>
+<p id="p1">GitLab.com</p>
 <form method="Post" action="login.php"><br><br>
 <b><label style="font-family:sans-serif;">Username or email</label></b>
 <input type="text" name="login_username"></input><br><br>
