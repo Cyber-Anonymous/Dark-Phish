@@ -1,7 +1,7 @@
 <center><img src="core/logo.png"/><br><br></center>
 
-# Dark-Phish v1.5
-An automated phishing tool.
+<h1 align="center"> Dark-Phish v1.6</h1>
+
 
 # Tested on
 - Kali Linux
