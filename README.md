@@ -1,6 +1,6 @@
 <center><img src="core/logo.png"/><br><br></center>
 
-<h1 align="center"> Dark-Phish v1.6</h1>
+<h1 align="center"> Dark-Phish v1.7</h1>
 
 
 # Tested on
