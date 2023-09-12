@@ -1,36 +1,48 @@
-<center><img src="core/logo.png"/><br><br></center>
+<p align="center">
+<img src="core/logo.png alt="Dark-Phish Logo"/>
+</p>
 
-<h1 align="center"> Dark-Phish v1.7</h1>
+<h1 align="center"> Dark-Phish v1.8</h1>
 
 
-# Tested on
+## Tested on
 - Kali Linux
 - Termux
 
-# Installation
+## Installation
 
-* apt install python3
+```bash
+apt install python3 curl php git -y
+```
+```bash
+pip3 install requests wget
+```
+```bash
+git clone https://github.com/Cyber-Anonymous/Dark-Phish.git
+cd Dark-Phish
+```
 
-* apt install curl
+## Usage 
+- Run the Dark-Phish tool
+```bash
+python3 dark-phish.py
+```
 
-* apt install php
+- For help and usage information
+```bash
+python3 dark-phish.py -h
 
-* apt install git
-
-* git clone https://github.com/Cyber-Anonymous/Dark-Phish.git
-
-* pip3 install requests
-
-* pip3 install wget
-
-* cd Dark-Phish
-
-* python3 dark-phish.py
+```
+## Available tunnels
+1. Localhost
+2. Ngrok
+3. Cloudflared 
+4. LocalXpose 
 
 ## Dark-Phish
-![](core/image.png)
+![](core/image1.png)
 
-# Thanks to TheLinuxChoice
+## Thanks to TheLinuxChoice
 
-# Warning
-***This tool is only for educational purpose. We are not responsible for any misuse or illegal activities.***
+## Disclaimer 
+***Dark-Phish is intended for educational and testing purposes only. Any use of this tool for illegal or unethical activities is strictly prohibited. The authors and contributors are not responsible for any misuse or damage caused by Dark-Phish. Use it responsibly and ensure compliance with all applicable laws and regulations in your jurisdiction.***
