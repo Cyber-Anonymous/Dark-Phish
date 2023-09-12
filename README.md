@@ -1,5 +1,5 @@
 <p align="center">
-<img src="core/logo.png alt="Dark-Phish Logo"/>
+<img src="core/logo.png" alt="Dark-Phish Logo"/>
 </p>
 
 <h1 align="center"> Dark-Phish v1.8</h1>
