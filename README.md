@@ -2,7 +2,7 @@
 <img src="core/logo.png" alt="Dark-Phish Logo"/>
 </p>
 
-<h1 align="center"> Dark-Phish v1.8</h1>
+<h1 align="center"> Dark-Phish v1.9</h1>
 
 
 ## Tested on
@@ -12,10 +12,10 @@
 ## Installation
 
 ```bash
-apt install python3 curl php git -y
+apt install python3 curl php git openssh -y
 ```
 ```bash
-pip3 install requests wget
+pip3 install requests wget pyshorteners
 ```
 ```bash
 git clone https://github.com/Cyber-Anonymous/Dark-Phish.git
@@ -38,6 +38,7 @@ python3 dark-phish.py -h
 2. Ngrok
 3. Cloudflared 
 4. LocalXpose 
+5. Serveo
 
 ## Dark-Phish
 ![](core/image1.png)
