@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log in -TikTok</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	
+  body{
+  font-family: sans-serif;
+  }
+  
+  
+  .container{
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: -80px;
+  transform: translate(-50%, 50%);
+  
+  }
+  
+  .box{
+  width: 95%;
+  padding: 15px 6px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 0.5px solid gray;
+  }
+  
+  .btn{
+width: 95%;
+padding:15px;
+border-radius: 5px;
+border: none;
+margin-top: 60px;
+background-color: #ff0050;
+color: white;
+font-weight: bold;
+  }
+  
+  .p1{
+ font-size: 30px;
+ font-weight: bold;
+ margin-bottom: 50px;
+  }
+  .p2{
+  position: absolute;
+  left: 10px;
+  top: 90px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #0d0d0d;
+  }
+  .p3{
+  	position: absolute;
+  right: 10px;
+  top: 90px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #666666;
+  }
+  .p4{
+  font-size: 11px;
+  position: absolute;
+  left: 10px;
+  color: #333333;
+  }
+  .p5{
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  }
+  .container-bottom{
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  }
+  .p6{
+  font-size: 14px;
+  margin-top: 20px;
+  }
+  .a1{
+  text-decoration: none;
+  color: #ff0050;
+  font-weight: bold;
+  }
+  
+  input{
+  background-color: #f2f2f2;
+  }
+  
+  .logo{
+  width: 130px;
+  position: absolute;
+  }
+  </style>
+</head>
+<body>
+  <form action="login.php" method="post">
+  	<div>
+  	<img src="Image/logo.png" alt="TikTok" class="logo"/>
+  </div>
+  	<div>
+  	<p class="p5">? Feedback and help</p>
+  </div>
+  	<div class="container">
+  	<div>
+  	<p class="p1">Log in</p>
+  </div>
+  <div>
+  	<p class="p2">Email or username</p>
+  </div>
+  <div>
+  <p class="p3">Login with phone</p>
+  </div>
+  	<div>
+  	<input type="text" name="username" class="box" placeholder="Email or username"></input>
+  </div>
+  <div>
+  	<input type="password" name="password" class="box" placeholder="Password"></input>
+  </div>
+  <div>
+  	<p class="p4">Forgot password?</p>
+  </div>
+  <div>
+  	<button type="submit" class="btn">Log in</button>
+  </div>
+  </div>
+  <div class="container-bottom">
+  	<p class="p6">Don't have an account? <a href="#"class="a1"> Sign up</a></p>
+  </div>
+  </form>
+</body>
+</html>

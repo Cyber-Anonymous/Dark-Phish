@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign in - Snaptube</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	
+  body{
+  	background-color: white;
+  font-family: Sans-serif;
+  }
+  
+  .container{
+  width: 400px;
+  height: 420px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  }
+  
+  .box{
+  width: 90%;
+  padding: 15px 2px;
+  border: 1px solid gray;
+  margin: 7px;
+  border-radius: 30px;
+  }
+  input{
+  	
+  }
+  
+  .btn{
+  width: 90%;
+  padding: 15px 0px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background-color: #ffcc00;
+  border-radius: 50px;
+  margin-top: 15px;
+  
+  }
+  
+  .logo{
+  width: 200px;
+  margin-top: 15px;
+  }
+  .image{
+  width: 150px;
+ 
+  }
+  
+  h3{
+  margin-top: 10px;
+  }
+  
+  .security{
+  font-size: 10px;
+  margin-top: -10px;
+  margin-bottom: 25px;
+  margin-left: 65px;
+  color: #0080ff;
+  }
+  .security-image{
+  width: 70px;
+  margin-top: -40px;
+  margin-left: -100px;
+  }
+  
+  .container-bottom{
+  margin-top: 550px;
+  }
+  .p1{
+  	font-size: 25px;
+  font-weight: bold;
+  	}
+  .sites-image{
+  width: 350px;
+  }
+  </style>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<div align="center";>
+			<img src="Image/image.png" alt="Snaptube" class="image"/>
+			<hr>
+		</div>
+		<div class="container">
+			<div>
+				<img src="Image/logo.png" alt="Snaptube" class="logo"/>
+			</div>
+			<div>
+				<h3>Get the Best Video & Music</h3>
+			</div>
+			<div>
+				<p class="security">Security verified</p>
+				<img src="Image/security.png" alt="Verified" class="security-image"/>
+			</div>
+			<div>
+				<input type="text" name="username" class="box" placeholder="Email"></input>
+			</div>
+			<div>
+				<input type="password" name="password" class="box" placeholder="Password"></input>
+			</div>
+			<div>
+				<button type="submit" class="btn">Sign in</button>
+			</div>
+		</div>
+		<div class="container-bottom">
+			<div>
+				<p class="p1">Snaptube Download from 50+ Popular Websites</p>
+			</div>
+			<div>
+				<img src="Image/sites.png" alt="Snaptube" class="sites-image"/>
+			<div>
+		</div>
+	</form>
+</body>
+</html>

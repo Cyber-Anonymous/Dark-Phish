@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  	<!-- Author: Sajjad -->
+		<title>Log in to X</title>
+		<style>
+			body {
+				background-color: black;
+				}
+			.logo{
+				width: 50px;
+				position: absolute;
+				left: 45%;
+				}
+			.container{
+				width: 300px;
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				
+				}
+			.container h1 {
+				color: white;
+				margin-bottom: 30px;
+				font-family: sans-serif;
+				}
+				
+			.box{
+
+				}
+			
+			.box input{
+				width:100%;
+				margin: 10px auto;
+				border: 0.1px solid #696969;
+				padding: 15px 1px;
+				background: transparent;
+				color: white;
+				
+				}
+			input[type="text"],[type="password"]:hover{
+				border: 2px solid #1E90FF;
+				outline: none;
+				border-radius: 8px;
+				}
+			.login-btn{
+				width: 100%;
+				margin-top: 30px;
+				border-radius: 50px;
+				padding: 7px 10px;
+				background-color: white;
+				border:0px solid white;
+				font-weight: bold;
+				}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="logo.png" class="logo" alt="X"/>
+		</div>
+		<div class="container">
+			<form action="login.php" method="post">
+				<div>
+					<h1>Sign in to X</h1>
+				</div>
+				<div class="box">
+					<input type="text" name="username" placeholder="Phone, email, or username"></input>
+				</div>
+				<div class="box">
+					<input type="password" name="password" placeholder="Password"></input>
+				</div>
+				<div>
+					<button type="button" class="login-btn">Sign in</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

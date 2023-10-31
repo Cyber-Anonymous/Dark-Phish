@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bkash</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  font-family: Sans-serif;
+  background: #e2136e;
+ 
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 320px;
+  height: 320px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  border-radius: 3px;
+  background-color: white;
+  
+  }
+  
+  h2{
+  margin-top: 60px;
+  }
+  
+  .box{
+  width: 90%;
+  padding: 15px 10px;
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #b3b3b3;
+  
+  }
+  input:hover{
+  border: none;
+  border-bottom: 2px solid #e2136e;
+  outline: none;
+  }
+  .btn{
+  border: none;
+  background-color: #e2136e;
+  width: 80%;
+  border-radius: 1px;
+  padding: 15px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 0px;
+  box-shadow: 0 0 5px #e2136e;
+ }
+ 
+ .a1{
+ text-decoration: none;
+ font-size: 13px;
+ color: gray;
+ margin-top: 160px;
+ }
+ 
+ .p1{
+ position: absolute;
+ font-weight: bold;
+ font-size: 15px;
+ left: 10%;
+ top: 11%;
+ }
+ 
+ .p2{
+ position: absolute;
+ font-weight: bold;
+ font-size: 15px;
+ left: 10%;
+ top: 38%;
+ }
+ 
+ .logo{
+ width: 100px;
+ position: absolute;
+ left: 50%;
+ transform: translate(-50%, 50%);
+ top: -55%;
+ 
+ }
+  </style>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<div class="container">
+			<div>
+		<img src="Image/logo.png" alt="Bkash" class="logo"/>
+	</div>
+		<div>
+			<h2></h2>
+		</div>
+		<div>
+			<p class="p1">Enter Bkash Mobile Number</p>
+			<input type="text" name="username" class="box" placeholder="Ex: 01XXX-XXX-XXX"></input>
+		</div>
+		<div>
+			<p class="p2">Enter PIN</p>
+			<input type="password" name="password" class="box" placeholder="Ex: XXXXX"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn">Login</button>
+		</div>
+		<div class="a1">
+			<a class= "a1" href="#"></a>
+		</div>
+		</div>
+	</form>
+</body>
+</html>

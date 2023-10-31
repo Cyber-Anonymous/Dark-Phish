@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Imo - Login</title>
+  <style>
+  	body{
+ font-family: Sans-serif;
+  }
+  .container{
+  width: 320px;
+  height: 450px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  
+  }
+  
+  h2{
+  
+  }
+  
+  .box{
+  width: 98%;
+  padding: 15px 10px;
+  border: none;
+  border-bottom: 2px solid #1a73e8;
+  margin-top: 60px;
+  }
+  
+  .btn{
+  border: none;
+  background-color: #6895E0;
+  width: 98%;
+  padding: 12px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+  border-radius: 2px;
+ }
+ 
+ .top{
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  background-color: #2C58A2;
+  height: 60px;
+  }
+  
+ .p1{
+ width: 100%;
+ font-size: 15px;
+ }
+ 
+ .p4{
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 12px;
+  margin-left: 5px;
+  }
+  .image{
+  width: 150px;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  }
+  
+  .remember{
+  border: 1px solid transparent;
+  width: 100%;
+  }
+  
+  .p3{
+  font-size: 13px;
+  color: #262626;
+  margin-top: 30px;
+  }
+  </style>
+</head>
+<body>
+	<div class="top">
+		<p class="p4">imo</p>
+		<img src="Image/image.png" alt="Imo" class="image"/>
+	</div>
+	<form action="otp.php" method="post">
+		<div class="container">
+		<div>
+			<h2>Enter code</h2>
+		</div>
+		<div class="p1">
+			<p class="p1">We just sent you an SMS verification code to your number</p>
+		</div>
+		<div>
+			<input type="text" name="otp" class="box" placeholder="OTP"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn">Login</button>
+		</div>
+		<div class="remember">
+				<p class="p3">Having trouble signing in? <strong style="color: #6895E0;">Send feedback</strong></p>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

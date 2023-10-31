@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PhonePe</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  font-family: Sans-serif;
+  background: white;
+ 
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 90vw;
+  height: 300px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 3px;
+  background-color: white;
+ /* border: 2px solid red;*/
+  }
+  
+  h2{
+  margin-top: 60px;
+  }
+  
+  .box{
+  width: 100%;
+  padding: 18px 10px;
+  border: 1px solid grey;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 4px;
+  }
+  
+  
+  input:hover{
+  border: 1.5px solid #00baf2;
+  box-shadow: 0 0 3px #00baf2;
+  outline: none;
+  }
+  
+  input::placeholder{
+  	font-weight: bold;
+  }
+  .btn{
+  background-color: #6739B7;
+  border: none;
+  width: 100%;
+  border-radius: 2px;
+  padding: 15px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  border: none;
+ }
+ 
+ .a1{
+ text-decoration: none;
+ font-size: 13px;
+ color: #00baf2;
+ font-weight: bold;
+ position: absolute;
+ right: 20px;
+ bottom: 30px;
+ }
+ 
+ .p1{
+ font-size: 15px;
+ margin-bottom: 3px;
+ }
+ .p2{
+ font-size: 15px;
+ margin-bottom: 3px;
+ }
+ 
+ .logo{
+ width: 150px;
+ position: absolute;
+ left: 50%;
+ top: 50px;
+ transform: translate(-50%, 50%);
+ }
+ 
+ .a2{
+ 	text-decoration: none;
+ color: grey;
+ font-size: 10px;
+ margin-top: 15px;
+ }
+  </style>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<div>
+		<img src="Image/logo.png" alt="PhonePe" class="logo"/>
+	</div>
+		<div class="container">
+			
+		<div>
+			<h2></h2>
+		</div>
+		<div>
+			<p class="p1">Username</p>
+			<input type="text" name="username" class="box" id="username" placeholder=""></input>
+		</div>
+		<div>
+			<p class="p2">Password</p>
+			<input type="password" name="password" class="box" id="password" placeholder=""></input>
+		</div>
+		<div>
+			<button type="submit" class="btn" id="btn">Log In</button>
+		</div>
+		<div class="a1">
+			<a class= "a1" href="#"></a>
+		</div>
+		
+		</div>
+	</form>
+</body>
+</html>

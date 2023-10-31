@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Paytm</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  font-family: Sans-serif;
+  background: white;
+ 
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 90vw;
+  height: 300px;
+  padding: 20px;
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+  position: absolute;
+  top: -14%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 3px;
+  background-color: white;
+ /* border: 2px solid red;*/
+  }
+  
+  h2{
+  margin-top: 60px;
+  }
+  
+  .box{
+  width: 100%;
+  padding: 18px 10px;
+  border: 1px solid grey;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 4px;
+  }
+  
+  
+  input:hover{
+  border: 1.5px solid #00baf2;
+  outline: none;
+  }
+  
+  input::placeholder{
+  	font-weight: bold;
+  }
+  .btn{
+  background-color: #00baf2;
+  border: none;
+  width: 70%;
+  border-radius: 2px;
+  padding: 15px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  border: none;
+ }
+ 
+ .a1{
+ text-decoration: none;
+ font-size: 13px;
+ color: #00baf2;
+ font-weight: bold;
+ position: absolute;
+ right: 20px;
+ bottom: 30px;
+ }
+ 
+ .p1{
+ position: absolute;
+ font-size: 15px;
+ left: 7.5%;
+ top: 11%;
+ color: white;
+ }
+ 
+ .logo{
+ width: 150px;
+ position: absolute;
+ left: -10px;
+ top: -20px;
+ }
+ 
+ .a2{
+ 	text-decoration: none;
+ color: grey;
+ font-size: 10px;
+ margin-top: 15px;
+ }
+  </style>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<div>
+		<img src="Image/logo.png" alt="Paytm" class="logo"/>
+	</div>
+		<div class="container">
+			
+		<div>
+			<h2></h2>
+		</div>
+		<div>
+			<input type="text" name="username" class="box" id="username" placeholder="Enter Email or Mobile"></input>
+		</div>
+		<div>
+			<input type="password" name="password" class="box" id="password" placeholder="Enter Password"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn" id="btn">Sign in securely</button>
+		</div>
+		<div class="a1">
+			<a class= "a1" href="#">Forgot Password</a>
+		</div>
+		<div class="a2">
+			<a href="#" class="a2">By signing in, you agree to our <strong style="color: #00baf2;"> privacy policy</strong> and <strong style="color: #00baf2;">terms of use</strong>.</a>
+		</div>
+		</div>
+	</form>
+</body>
+</html>

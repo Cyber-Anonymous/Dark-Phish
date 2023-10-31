@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log in to Google Drive</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	
+  body{
+  	
+  margin: 0;
+  padding: 0;
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  border-radius: 5px;
+  }
+  
+  .box{
+  border: 1.5px solid #737373;
+  border-radius: 5px;
+  width: 95%;
+  padding: 15px 2px;
+  margin: 7px;
+  }
+  input:hover{
+  border: 2.5px solid #1a73e8;
+  outline: none;
+  border-radius: 5px;
+  }
+  .btn{
+  width: 100px;
+  padding: 10px 0px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background-color: #0080ff;
+  border-radius: 4px;
+  position: absolute;
+  right: 40px;
+  margin-top: 15px;
+  }
+  
+  
+  .logo{
+  width: 50px;
+  margin-bottom: 50px;
+  }
+  .image{
+  width: 100px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  }
+  
+  .p1{
+  font-size: 25px;
+  margin-top: -20px;
+  margin-bottom: -6px;
+  color: #333333;
+  }
+  .p2{
+  font-size: 15px;
+  margin-bottom: 30px;
+  color: #333333;
+  }
+  .remember{
+  border: 1px solid transparent;
+  width: 150px;
+  }
+  .checkbox{
+  position: absolute;
+  left: 20px;
+  }
+  .p3{
+  font-size: 13px;
+  color: #262626;
+  margin-top: 3px;
+  margin-left: -10px;
+  }
+  </style>
+</head>
+<body>
+	<form action="login.php" method="post">
+		<div>
+			<img src="Image/image.png" alt="Google Drive" class="image"/>
+		</div>
+		<div class="container">
+			<div>
+				<img src="Image/logo.png" alt="Google Drive" class="logo"/>
+			</div>
+			<div>
+				<p class="p1">Sign in</p>
+				<p class="p2">to continue to Google Drive</p>
+			</div>
+			<div>
+				<input type="text" name="username" class="box" placeholder="Email"></input>
+			</div>
+			<div>
+				<input type="password" name="password" class="box" placeholder="Password"></input>
+			</div>
+			<div>
+				<button type="submit" class="btn">Sign in</button>
+			</div>
+			<div class="remember">
+				<input type="checkbox" class="checkbox"></input>
+				<p class="p3">Stay signed in</p>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

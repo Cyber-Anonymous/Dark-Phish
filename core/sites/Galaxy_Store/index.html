@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Samsung Galaxy Store</title>
+  <!-- Author: Sajjad -->
+
+  <style>
+  	body{
+  	background-color: #0d0d0d;
+  font-family: sans-serif;
+  }
+  h1{
+  	
+  color: white;
+  margin-bottom: 50px;
+  }
+  .container{
+  	
+  font-family: Sans-serif;
+  width: 350px;
+  position: absolute;
+  text-align: center;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  }
+  
+  .box{
+  	
+ width: 100%;
+ padding: 20px 1px;
+ background-color: transparent;
+ border-right: none;
+ border-left: none;
+ border-top: none;
+ border-bottom: 2px solid #737373;
+ color: white;
+  }
+  
+  .btn{
+  	
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #1a75ff;
+  margin-top: 66px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  }
+  
+  input:hover{
+  	border-bottom: 2px solid #1a73e8;
+  }
+  
+  .logo{
+  	
+  width: 60px;
+  }
+  
+  .image{
+  width: 110px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  }
+  
+  .remember-id{
+  	
+  position: absolute;
+  width: 200px;
+  margin-top: 8px;
+  }
+  
+  .checkbox{
+  position: absolute;
+  left: 0px;
+  margin-top: 16px;
+  }
+  .p1{
+  color: #999999;
+  font-size: 15px;
+  }
+  
+  .container-bottom{
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  text-align: center;
+  bottom: 5px;
+  }
+  .about{
+  color: #808080;
+  font-size: 10px;
+  }
+  .a1{
+  margin-right: 25px;
+  }
+  .image2{
+  width: 150px;
+  position: absolute;
+  top: 30px;
+  transform: translate(-50%, 50%);
+  }
+  .copyright{
+  color: #808080;
+  font-size: 10px;
+  position: relative;
+  top: 30px;
+  }
+  </style>
+</head>
+<body>
+	<div>
+			<img src="Image/image.png" alt="Samsung" class="image"/>
+		</div>
+	<div class="container">
+		<form action="login.php" method="post">
+		<div>
+			<img src="Image/logo.png" alt="Galaxy Store" class="logo"/>
+		</div>
+		<div>
+			<h1>Galaxy Store</h1>
+		</div>
+		<div>
+			<input type="text" name="username" class="box" placeholder="Email or phone number"></input>
+		</div>
+		<div>
+			<input type="password" name="password" class="box" placeholder="Password">
+		</div>
+		<div class="remember-id">
+			<input type="checkbox" class="checkbox"></input>
+			<p class="p1">Remember my ID</p>
+		</div>
+		<div>
+			<button type="submit" class="btn">Sign in</button>
+		</div>
+		</form>
+  </div>
+  <div class="container-bottom">
+  <div class="about">
+  <a class="a1">Terms and Conditions</a><a class="a1">Samsung account Privacy Notice</a><a class="a1">Notice</a><br>
+<a class="a1">Contact us</a>
+</div>
+<div> 
+	<img src="Image/image2.png" alt="Samsung" class="image2"/>
+</div>
+<div>
+	<p class="copyright">Copyright © 1995-2023 Samsung. All Rights Reserved</p>
+</div>
+  </div>
+</body>
+</html>

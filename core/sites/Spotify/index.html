@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Log in - Spotify</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  background-color: black;
+  font-family: Sans-serif;
+  color: white;
+  }
+  
+  .container{
+  width: 350px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,50%);
+  text-align: center;
+  }
+  
+  .logo{
+  	
+  }
+  
+  .image{
+  	width: 80px;
+  }
+  
+  .box{
+  	width: 95%;
+  background-color: transparent;
+  color: white;
+  border: 1px solid gray;
+  padding: 15px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  }
+  
+  input:hover{
+  	border: 2.5px solid white;
+  }
+  
+  .btn{
+  	width: 95%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding: 14px 0px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  color: black;
+  background-color: #1ED760;
+  }
+  
+  h2{
+  color: white;
+  margin-bottom: 50px;
+  }
+  
+  .p1{
+  font-weight: bold;
+  margin-left: -203px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  }
+  .p2{
+  font-weight: bold;
+  margin-left: -256px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  }
+  .p3{
+  font-size: 10px;
+  color: #b3b3b3;
+  position: absolute;
+  bottom: 5px;
+  
+  }
+  a{
+  	color: white;
+  font-size: 13px;
+  }
+  </style>
+</head>
+<body>
+  <form action="login.php" method="post">
+  <div>
+  	<img src="Image/image.png" alt="Spotify" class="image"/>
+  </div>
+  <div class="container">
+  <div>
+  	<h2>Log in to Spotify</h2>
+  </div>
+  <div>
+  	<p class="p1">Email or username</p>
+  	<input type="text" name="username" class="box" placeholder="Email or username"></input>
+  </div>
+  <div>
+  	<p class="p2">Password</p>
+  	<input type="password" name="password" class="box" placeholder="Password"></input>
+  </div>
+  <div>
+  	<button type="submit" class="btn">Log In</button>
+  </div>
+  <div>
+  	<a href="#">Forgot your password?</a>
+  </div>
+  </div>
+  <div class="p3">
+  	<p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
+  </div>
+  </form>
+</body>
+</html>

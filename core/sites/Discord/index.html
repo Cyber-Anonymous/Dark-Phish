@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Discord - Login</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  font-family: Sans-serif;
+  background: url("Image/image.png") no-repeat center center fixed;
+  background-size: cover;
+  
+  }
+  
+  .logo{
+  width: 100px;
+  position: absolute;
+  top:2px;
+  left: 2px;
+  }
+  .container{
+  width: 400px;
+  height: 380px;
+  background-color: #36393e;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 50%);
+  top: -0%;
+  text-align: center;
+  border-radius: 5px;
+  }
+  .welcome{
+  color: white;
+  font-size: 20px;
+  }
+  
+  .box{
+  background-color: #1e2124;
+  border: none;
+  width: 90%;
+  padding: 12px 8px;
+  border-radius: 5px;
+  margin: 10px auto;
+  color: white;
+  }
+  input[type="text"]{
+  margin-top: 30px;
+  
+  }
+  input[type="password"]{
+  margin-top: 30px;
+  }
+  input:hover{
+  border: 2px solid #7289da;
+  outline: none;
+  }
+  .p1{
+  color: #a6a6a6;
+  margin-top: -13px;
+  font-size: 12px;
+  }
+  .p2{
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  position: absolute;
+  left: 18px;
+  }
+  
+  .p3{
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  position: absolute;
+  left: 18px;
+  top: 160px;
+  }
+  
+  .btn{
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+  background-color: #7289da;
+  padding: 12px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 8px;
+  }
+  
+  .a1{
+  text-decoration: none;
+  color: #7289da;
+  font-size: 11px;
+  margin-top: 3px;
+  }
+  .a2{
+  text-decoration: none;
+  color: #7289da;
+  font-size: 11px;
+  margin-top: 8px;
+  }
+  
+  .other{
+  position: absolute;
+  text-align: left;
+  left: 20px;
+  top: 300px;
+  font-weight: bold;
+  }
+ </style>
+</head>
+<body>
+	<div>
+		<img src="Image/logo.png" alt="Discord" class="logo"/>
+	</div>
+	<form action="login.php" method="post">
+		<div class="container">
+			<div class="welcome">
+				<p class="welcome">Welcome back!</p>
+			</div>
+			<div>
+				<p class="p1">We're so excited to see you again!</p>
+			</div>
+		<div>
+			<p class="p2">EMAIL</p>
+			<input type="text" class="box" name="username"></input>
+		</div>
+		<div>
+			<p class="p3">PASSWORD</p>
+			<input type="password" class="box" name="password"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn">Login</button>
+		</div>
+		<div class="other">
+			<div class="a1">
+			<a class="a1" href="#">Forgot your password?</a>
+			</div>
+			<div class="a2">
+			<a class="a2" href="#">Register an account</a>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

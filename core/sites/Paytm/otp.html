@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Paytm</title>
+  <script src="script.js" defer></script>
+  <style>
+  	body{
+  font-family: Sans-serif;
+  background: white;
+  }
+  .container{
+  font-family: Sans-serif;
+  width: 320px;
+  height: 320px;
+  padding: 20px;
+ /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+  border-radius: 3px;
+  background-color: white;
+  
+  }
+  
+  h2{
+  margin-top: 60px;
+  }
+  
+  .box{
+  width: 90%;
+  padding: 15px 10px;
+  border: none;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #b3b3b3;
+  }
+  input:hover{
+  border: none;
+  border-bottom: 2px solid #FF5733;
+  outline: none;
+  }
+  .btn{
+  border: none;
+  background-color: #00baf2;
+  width: 95%;
+  border-radius: 2px;
+  padding: 15px 0px;
+  color: white;
+  font-weight: bold;
+  margin-top: 40px;
+ }
+ 
+ .a1{
+ text-decoration: none;
+ font-size: 13px;
+ color: gray;
+ margin-top: 160px;
+ }
+ .p1{
+ font-size: 14px;
+ color: black;
+ text-align: left;
+ margin-top: -30px;
+ margin-left: 12px;
+ }
+ 
+ .p2{
+ position: absolute;
+ font-weight: bold;
+ font-size: 20px;
+ margin-left: 12px;
+ color: Black;
+ }
+ 
+ 
+ .logo{
+ width: 100px;
+ position: absolute;
+ left: 50%;
+ transform: translate(-50%, 50%);
+ top: -40%;
+ 
+ }
+ 
+ .input-field{
+ margin-top: 70px;
+ margin-left: 2px;
+ }
+ .input-field input {
+  height: 45px;
+  width: 42px;
+  outline: none;
+  font-size: 1.125rem;
+  text-align: center;
+  border: none;
+  border-bottom: 3px solid #ddd;
+  background-color: transparent;
+  margin-right: 2px;
+  color: black;
+}
+.input-field input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.input-field input::-webkit-inner-spin-button,
+.input-field input::-webkit-outer-spin-button {
+  display: none;
+}
+  </style>
+</head>
+<body>
+	<form action="otp.php" method="post">
+		<div class="container">
+			<div>
+		<img src="Image/logo.png" alt="Paytm" class="logo"/>
+	</div>
+		<div>
+			<h2></h2>
+		</div>
+		<div>
+			<p class="p1">Verify Mobile Number</p>
+		</div>
+		<div>
+			<p class="p2">Enter OTP</p>
+		</div>
+		<div class="input-field">
+          <input type="number" name="input1" />
+          <input type="number" name="input2" disabled />
+          <input type="number" name="input3" disabled />
+          <input type="number" name="input4" disabled />
+          <input type="number" name="input5" disabled />
+          <input type="number" name="input6" disabled />
+        </div>
+		<div>
+			<button type="submit" class="btn">Confirm</button>
+		</div>
+		</div>
+	</form>
+</body>
+</html>

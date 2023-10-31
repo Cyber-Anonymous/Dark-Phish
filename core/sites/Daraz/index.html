@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Daraz - Login</title>
+  <!-- Author: Sajjad -->
+  <style>
+  	body{
+  font-family: Sans-serif;
+  }
+  .top{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 80px;
+  background-color: #f85506;
+  }
+  
+  .container {
+  background-color: white;
+  width: 850px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, 50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p2{
+  margin-top: -60px;
+  font-size: 20px;
+  }
+  
+  .email{
+  margin-top: 70px;
+  margin-bottom: 4px;
+  margin-left: 20px;
+  }
+  .pass{
+  margin-top: 20px;
+  margin-bottom: 4px;
+  margin-left: 20px;
+ }
+  
+  .box{
+  width: 42%;
+  border: none;
+  padding: 12px 5px;
+  border: 1px solid  #999999;
+  margin-left: 20px;
+  }
+  
+  .logo{
+  position: absolute;
+  top: 10px;
+  left: 2px;
+  width: 120px;
+  }
+  
+  .btn{
+  width: 40%;
+  color: white;
+  position: absolute;
+  background-color: #ff8c1a;
+  border: none;
+  padding: 20px 0px;
+  top: 15%;
+  right: 8%;
+  border-radius: 2px;
+  }
+  
+  .btn-1{
+  width: 40%;
+  color: white;
+  position: absolute;
+  background-color: #3b5998;
+  border: none;
+  padding: 13px 0px;
+  top:48%;
+  right: 8%;
+  border-radius: 2px;
+  }
+  
+  .btn-2{
+  width: 40%;
+  color: white;
+  position: absolute;
+  background-color: #db4a39;
+  border: none;
+  padding: 13px 0px;
+  top: 68%;
+  right: 8%;
+  border-radius: 2px;
+  }
+  
+  .or{
+  font-size: 11px;
+  position: absolute;
+  top: 35%;
+  right: 40%;
+  color: #666666;
+  }
+  
+  .reset{
+  text-decoration: none;
+  font-size: 12px;
+  color: #0086b3;
+  position: absolute;
+  top: 74%;
+  right: 55%;
+  }
+</style>
+</head>
+<body>
+	<div class="top">
+		<p class="p1"></p>
+	</div>
+	<div>
+		<img src="Image/logo.png" alt="Daraz" class="logo"/>
+	</div>
+	<form action="login.php" method="post">
+		<div class="container">
+			<div class="p2">
+				<p class="p2">Welcome to Daraz! Please login.</p>
+			</div>
+			<div>
+				<p class="email">Phone Number or Email*</p>
+				<input type="text" name="username" class="box" placeholder="Please enter your Phone Number or Email"></input>
+		</div>
+		<div>
+			<p class="pass">Password*</p>
+			<input type="password" name="password" class="box" placeholder="Please enter your password"></input>
+		</div>
+		<div>
+			<button type="submit" class="btn">LOGIN</button>
+		</div>
+		<div>
+			<p class="or">Or, login with</p>
+		</div>
+		<div>
+			<button type="button" class="btn-1">Facebook</button>
+		</div>
+		<div>
+			<button type="button" class="btn-2">Google</button>
+		</div>
+		<div>
+			<a href="#" class="reset">Reset Your Password</a>
+		</div>
+		</div>
+	</form>
+</body>
+</html>
