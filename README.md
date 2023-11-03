@@ -4,7 +4,7 @@ Empowering Ethical Phishing for Security Assessment.
 <p align="center">
 <img src="core/logo.png" alt="Dark-Phish Logo"/>
 
-<h1 align="center"> Dark-Phish v2.0</h1>
+<h1 align="center"> Dark-Phish v2.1</h1>
 
 **Dark-Phish** is a specialized phishing tool created for educational and security testing purposes. It provides users with the capability to simulate phishing attacks, enabling the assessment of system vulnerabilities and user awareness.
 
