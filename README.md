@@ -4,7 +4,7 @@ Empowering Ethical Phishing for Security Assessment.
 <p align="center">
 <img src="core/logo.png" alt="Dark-Phish Logo"/>
 
-<h1 align="center"> Dark-Phish v2.1</h1>
+<h1 align="center"> Dark-Phish v2.2</h1>
 
 **Dark-Phish** is a specialized phishing tool created for educational and security testing purposes. It provides users with the capability to simulate phishing attacks, enabling the assessment of system vulnerabilities and user awareness.
 
@@ -32,7 +32,7 @@ Empowering Ethical Phishing for Security Assessment.
 ## Installation
 
 ```bash
-apt install python3 curl php git openssh -y
+apt install python3 curl php git openssh nodejs npm -y
 ```
 ```bash
 pip3 install requests wget pyshorteners
@@ -58,6 +58,30 @@ python3 dark-phish.py -h
 python3 dark-phish.py -r
 ```
 
+## Help
+```bash
+
+python3 dark-phish.py -h
+
+Name:
+    Dark-Phish
+    
+Usage:
+    python3 dark-phish.py [-h] [-p PORT] [-u] [-v] [-r]
+
+Version:
+    2.2
+
+Options:
+    -h,  --help                     Show this help massage.
+    -p PORT,  --port PORT           Web server port [Default : 8080] .
+    -u,  --update                   Check for updates.
+    -v,  --version                  Show version number and exit.
+    -r,  --retrieve                 Retrieve saved credentials.
+
+
+```
+
 ## OTP Capture Technique
 
  1. When a victim enters their credentials on the phishing page, the attacker immediately receives this information.
@@ -73,9 +97,11 @@ python3 dark-phish.py -r
 3. Cloudflared 
 4. LocalXpose 
 5. Serveo
+6. Localtunnel
 
 ## Dark-Phish
 ![](core/image1.png)
+![](core/image2.png)
 
 ## Thanks to TheLinuxChoice
 
