@@ -4,7 +4,7 @@ Empowering Ethical Phishing for Security Assessment.
 <p align="center">
 <img src="core/logo.png" alt="Dark-Phish Logo"/>
 
-<h1 align="center"> Dark-Phish v2.2.1</h1>
+<h1 align="center"> Dark-Phish v2.3.0</h1>
 
 **Dark-Phish** is a specialized phishing tool created for educational and security testing purposes. It provides users with the capability to simulate phishing attacks, enabling the assessment of system vulnerabilities and user awareness.
 
@@ -17,22 +17,26 @@ Empowering Ethical Phishing for Security Assessment.
 
 - **Credential Management**: Easily access and manage saved credentials.
 
-- **Custom Phishing Templates**: Create customized and convincing phishing scenarios.
+- **Clone Existing Website**: The Clone feature copies a website’s login page for phishing simulations, capturing credentials when users log in.
+
+- **Create Phishing Pages**: The Create feature provides an HTML editor to build phishing pages, allowing full control over design and functionality.
+
+- **Custom Phishing Templates**: The Custom feature provides a pre-built HTML template that can be easily modified to create personalized phishing pages.
 
 - **OTP Capture**: Efficiently collect one-time passwords for improved assessment capabilities.
 
 - **URL Obfuscation:** Dark-Phish conceals phishing URLs, making them appear trustworthy and less suspicious.
 
 
-
 ## Tested on
 - Kali Linux
 - Termux
 
+
 ## Installation
 
 ```bash
-apt install python3 curl php git openssh nodejs npm -y
+apt install python3 curl php git openssh nodejs npm python3-tk -y
 ```
 ```bash
 pip3 install requests wget pyshorteners
@@ -67,18 +71,18 @@ Name:
     Dark-Phish
     
 Usage:
-    python3 dark-phish.py [-h] [-p PORT] [-u] [-v] [-r]
+    python3 dark-phish.py [-h] [-H HOST] [-p PORT] [-u] [-v] [-r]
 
 Version:
-    2.2
+    2.3.0
 
 Options:
     -h,  --help                     Show this help massage.
+    -H HOST, --host HOST            Specify the host address [Default : 127.0.0.1] . 
     -p PORT,  --port PORT           Web server port [Default : 8080] .
     -u,  --update                   Check for updates.
     -v,  --version                  Show version number and exit.
     -r,  --retrieve                 Retrieve saved credentials.
-
 
 ```
 

