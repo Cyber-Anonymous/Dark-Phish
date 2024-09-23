@@ -2571,8 +2571,8 @@ elif (option=="create"):
 				"   - Use this editor to write or modify HTML code for the web pages you wish "
 				"to use in your phishing scenarios.\n"
 				"   - The form tag must include the attributes:\n"
-				'     action="login.php" and method="POST" to capture the credentials.\n\n'
-				'     examp'
+				'     action="login.php" and method="POST" to capture the credentials.\n'
+				'     example: <form method="POST" action="login.php"></form>\n\n'
 
 				"Saving Files:\n"
 				"   - Press CTRL+S or go to the 'Menu' and click 'Save' to save your file.\n"
