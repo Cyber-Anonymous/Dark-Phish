@@ -718,7 +718,7 @@ def server(action):
 		start_ngrok_server() 
 		os.chdir("sites/{}".format(action))
 		os.system("""
-	curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[-0-9A-Za-z]*\.ngrok-free.app" -oh > link.txt
+	curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[-0-9A-Za-z]*\\.ngrok-free.app" -oh > link.txt
 	""")
 
 
@@ -732,7 +732,7 @@ sleep 12""".format(host, port))
 		shutil.move("tunnel.txt", "sites/{}".format(action)) 
 		os.chdir("sites/{}".format(action))
 		
-		os.system("""grep -o "https://[-0-9A-Za-z]*\.trycloudflare.com" "tunnel.txt" -oh > link.txt""")
+		os.system("""grep -o "https://[-0-9A-Za-z]*\\.trycloudflare.com" "tunnel.txt" -oh > link.txt""")
 
 
 	elif (tunnel == 4):
@@ -761,7 +761,7 @@ sleep 12""".format(host, port))
 		shutil.move("tunnel.txt","sites/{}".format(action))
 		os.chdir("sites/{}".format(action))
 		os.system("""
-		grep -o "[-0-9A-Za-z]*\.loclx.io" "tunnel.txt" -oh > link.txt""")
+		grep -o "[-0-9A-Za-z]*\\.loclx.io" "tunnel.txt" -oh > link.txt""")
 		temp = open("link.txt","r")
 		link = temp.read()
 		temp.close()
@@ -778,7 +778,7 @@ sleep 12""".format(host, port))
 		shutil.move("tunnel.txt","sites/{}".format(action))
 		os.chdir("sites/{}".format(action))
 		os.system("""
-		grep -o "https://[-0-9a-z]*\.serveo.net" "tunnel.txt" -oh > link.txt
+		grep -o "https://[-0-9a-z]*\\.serveo.net" "tunnel.txt" -oh > link.txt
 		""")
 
 
@@ -790,7 +790,7 @@ sleep 12""".format(host, port))
 		shutil.move("tunnel.txt", "sites/{}".format(action))
 		os.chdir("sites/{}".format(action))
 		os.system("""
-			grep -o "https://[-0-9a-z]*\.loca.lt" "tunnel.txt" -oh > link.txt
+			grep -o "https://[-0-9a-z]*\\.loca.lt" "tunnel.txt" -oh > link.txt
 			""")
 
 	else:
